@@ -4,7 +4,7 @@ import Footer from 'components/footer'
 import About from 'components/about'
 import Parallax from 'components/parallax'
 import Faq from 'components/faq'
-// import Contact from 'components/contact'
+import Contact from 'components/contact'
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
         <Parallax background="bg1" />
         <Faq />
         <Parallax background="bg2" />
-        {/* <Contact /> */}
+        <Contact />
         <Footer />
       </div>
       <style jsx>
