@@ -44,7 +44,7 @@ const map = () => {
       `}</style>
       <style jsx>{`
         .map {
-          height: 450px;
+          height: 480px;
           position: relative;
           overflow: hidden;
         }
