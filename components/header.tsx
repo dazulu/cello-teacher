@@ -1,7 +1,7 @@
 import Logo from './logo'
 import Navigation from './navigation'
 
-const Header = () => {
+const header = () => {
   return (
     <>
       <div className="header__wrapper">
@@ -67,4 +67,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default header
