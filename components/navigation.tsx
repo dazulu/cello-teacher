@@ -1,34 +1,69 @@
 import BurgerButton from './burgerbutton'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { clearAllBodyScrollLocks } from 'body-scroll-lock'
 
 const navigation = () => {
+  const closeNav = () => {
+    if (
+      document.querySelector('.menu__button')!.classList.contains('is--open')
+    ) {
+      document.querySelector('.menu__button')!.classList.remove('is--open')
+      document.querySelector('.nav')!.classList.remove('nav--open')
+      clearAllBodyScrollLocks()
+    }
+  }
   return (
     <>
       <div>
-        <nav role="navigation">
+        <nav id="nav" role="navigation">
           <ul className="nav">
             <li className="nav__item">
-              <AnchorLink href="#about" offset="30" className="nav__link">
+              <AnchorLink
+                href="#about"
+                offset="30"
+                className="nav__link"
+                onClick={closeNav}
+              >
                 About
               </AnchorLink>
             </li>
             <li className="nav__item">
-              <AnchorLink href="#lessons" offset="30" className="nav__link">
+              <AnchorLink
+                href="#lessons"
+                offset="30"
+                className="nav__link"
+                onClick={closeNav}
+              >
                 Lessons
               </AnchorLink>
             </li>
             <li className="nav__item">
-              <AnchorLink href="#faq" offset="30" className="nav__link">
+              <AnchorLink
+                href="#faq"
+                offset="30"
+                className="nav__link"
+                onClick={closeNav}
+              >
                 FAQ
               </AnchorLink>
             </li>
             <li className="nav__item">
-              <AnchorLink href="#contact" offset="30" className="nav__link">
+              <AnchorLink
+                href="#contact"
+                offset="30"
+                className="nav__link"
+                onClick={closeNav}
+              >
                 Contact
               </AnchorLink>
             </li>
             <li className="nav__item">
-              <AnchorLink href="#map" offset="30" className="nav__link">
+              <AnchorLink
+                href="#map"
+                offset="30"
+                className="nav__link"
+                onClick={closeNav}
+              >
                 Location
               </AnchorLink>
             </li>

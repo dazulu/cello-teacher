@@ -1,9 +1,42 @@
+import { useEffect, useState } from 'react'
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
+
 const burgerbutton = () => {
+  const [resizeThrottle, setResizeThrottle] = useState<boolean>(false)
+
   const toggleMenu = () => {
+    if (
+      !document.querySelector('.menu__button')!.classList.contains('is--open')
+    ) {
+      disableBodyScroll(document.querySelector('#nav')!)
+    } else {
+      clearAllBodyScrollLocks()
+    }
+
     document.querySelector('.menu__button')!.classList.toggle('is--open')
     document.querySelector('.nav')!.classList.toggle('nav--open')
-    document.body.classList.toggle('no-touchy-action')
   }
+
+  useEffect(() => {
+    const onResize = () => {
+      console.log('onResize')
+      if (!resizeThrottle) {
+        setResizeThrottle(true)
+
+        if (window.innerWidth >= 1024) {
+          document.querySelector('.menu__button')!.classList.remove('is--open')
+          document.querySelector('.nav')!.classList.remove('nav--open')
+          clearAllBodyScrollLocks()
+        }
+
+        setTimeout(() => {
+          setResizeThrottle(false)
+        }, 100)
+      }
+    }
+
+    window.addEventListener('resize', onResize)
+  })
 
   return (
     <>
