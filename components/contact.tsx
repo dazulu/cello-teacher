@@ -9,10 +9,16 @@ const contact = () => {
             name="contact"
             method="POST"
             data-netlify="true"
-            data-netlify-honeypot="bot-field"
+            data-netlify-honeypot="blackhole"
           >
             <p>
               <input type="hidden" name="form-name" value="contact" />
+            </p>
+            <p className="obfuscate">
+              <label>
+                If you want no reply:
+                <input name="blackhole" tabIndex={-1} autoComplete="off" />
+              </label>
             </p>
             <p>
               <label>
@@ -44,6 +50,10 @@ const contact = () => {
         .title {
           text-align: center;
           margin-bottom: 40px;
+        }
+
+        .obfuscate {
+          display: none !important;
         }
       `}</style>
     </>
