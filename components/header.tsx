@@ -29,7 +29,7 @@ const Header = () => {
 
         @media only screen and (min-width: 700px) {
           .header {
-            padding: 0 20px * 2;
+            padding: 0 40px;
           }
         }
 
