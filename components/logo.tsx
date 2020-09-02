@@ -24,7 +24,6 @@ const logo = () => {
         .text {
           color: #fff;
           font-size: 1.9em;
-          font-weight: 100;
           margin: 0 0 0 10px;
         }
 
