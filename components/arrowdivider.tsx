@@ -7,7 +7,7 @@ const arrowdivider: React.FC<Props> = ({ type }) => {
     <>
       <div className="arrow__wrapper">
         {type === 'solid' ? (
-          <div className="transparent" />
+          <div className="solid" />
         ) : (
           <div className="transparent">
             <div></div>
