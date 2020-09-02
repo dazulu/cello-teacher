@@ -8,6 +8,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
+        <title>Christoph Siska</title>
         <link rel="icon" href="/favicon.png" />
 
         <link
