@@ -1,9 +1,6 @@
 import Head from 'next/head'
 import { AppProps } from 'next/app'
 
-import Header from 'components/header'
-import Footer from 'components/footer'
-
 import 'styles/reset.scss'
 import 'styles/globals.scss'
 
@@ -36,9 +33,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta property="og:url" content="foo" />
         <meta property="og:type" content="website" />
       </Head>
-      <Header />
       <Component {...pageProps} />
-      <Footer />
     </>
   )
 }
