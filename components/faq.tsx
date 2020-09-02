@@ -35,7 +35,7 @@ const faq = () => {
     <>
       <div id="faq" className="padding__wrapper">
         <div className="content__wrapper faq">
-          <h2 className="faq__title">Frequently Asked Questions</h2>
+          <h2 className="title">Frequently Asked Questions</h2>
           <div className="grid">
             {questions.map((q: Question) => (
               <div>
@@ -47,7 +47,7 @@ const faq = () => {
         </div>
       </div>
       <style jsx>{`
-        .faq__title {
+        .title {
           text-align: center;
           margin-bottom: 40px;
         }
