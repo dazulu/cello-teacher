@@ -11,6 +11,7 @@ const contact = () => {
             data-netlify="true"
             data-netlify-recaptcha="true"
           >
+            <input type="hidden" name="form-name" value="contact" />
             <p>
               <label>
                 Name: <input type="text" name="name" />
