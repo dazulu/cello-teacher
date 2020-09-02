@@ -9,9 +9,11 @@ const contact = () => {
             name="contact"
             method="POST"
             data-netlify="true"
-            data-netlify-recaptcha="true"
+            data-netlify-honeypot="bot-field"
           >
-            <input type="hidden" name="form-name" value="contact" />
+            <p>
+              <input type="hidden" name="form-name" value="contact" />
+            </p>
             <p>
               <label>
                 Name: <input type="text" name="name" />
@@ -32,7 +34,6 @@ const contact = () => {
                 Message: <textarea name="message"></textarea>
               </label>
             </p>
-            <div data-netlify-recaptcha="true"></div>
             <p>
               <button type="submit">Send</button>
             </p>
