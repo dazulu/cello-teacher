@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import ArrowDivider from './arrowdivider'
 
 const contact = () => {
   const toggleFieldClass = (target: HTMLTextAreaElement | HTMLInputElement) => {
@@ -42,43 +41,58 @@ const contact = () => {
       <div id="contact" className="padding__wrapper">
         <div className="content__wrapper contact">
           <h2 className="title">Contact</h2>
-          <pre id="info"></pre>
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="blackhole"
-          >
-            <p>
-              <input type="hidden" name="form-name" value="contact" />
-            </p>
-            <div className="obfuscate">
-              <label>
-                If you want no reply:
-                <input name="blackhole" tabIndex={-1} autoComplete="off" />
-              </label>
+
+          <div className="section">
+            <div className="text">
+              <p>
+                Christoph Siska
+                <br />
+                Hilprechtshausen 7<br />
+                37581 Bad Gandersheim
+              </p>
+              <p>Telefon 0160 92723100</p>
+              <p>Christoph-Siska@web.de</p>
             </div>
 
-            <div>
-              <input name="name" type="text" required />
-              <label htmlFor="name">Name*</label>
+            <div className="form">
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="blackhole"
+              >
+                <p>
+                  <input type="hidden" name="form-name" value="contact" />
+                </p>
+                <div className="obfuscate">
+                  <label>
+                    If you want no reply:
+                    <input name="blackhole" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
+
+                <div>
+                  <input name="name" type="text" required />
+                  <label htmlFor="name">Name*</label>
+                </div>
+                <div>
+                  <input name="email" type="email" required />
+                  <label htmlFor="email">Email*</label>
+                </div>
+                <div>
+                  <input name="phone" type="tel" />
+                  <label htmlFor="phone">Phone</label>
+                </div>
+                <div>
+                  <textarea name="message" required></textarea>
+                  <label htmlFor="message">Message*</label>
+                </div>
+                <button className="button" type="submit">
+                  Send
+                </button>
+              </form>
             </div>
-            <div>
-              <input name="email" type="email" required />
-              <label htmlFor="email">Email*</label>
-            </div>
-            <div>
-              <input name="phone" type="tel" />
-              <label htmlFor="phone">Phone</label>
-            </div>
-            <div>
-              <textarea name="message" required></textarea>
-              <label htmlFor="message">Message*</label>
-            </div>
-            <button className="button" type="submit">
-              Send
-            </button>
-          </form>
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -91,9 +105,32 @@ const contact = () => {
           display: none !important;
         }
 
+        .text {
+          margin-bottom: 60px;
+        }
+
+        @media only screen and (min-width: 800px) {
+          .section {
+            display: flex;
+          }
+
+          .text {
+            width: 50%;
+            margin-right: 10%;
+            margin-bottom: 0;
+          }
+
+          .form {
+            top: -20px;
+            position: relative;
+            width: 40%;
+          }
+        }
+
         form {
           max-width: 500px;
           margin: 0 auto;
+          position: relative;
           width: 100%;
 
           > div {
