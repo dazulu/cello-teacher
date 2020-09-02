@@ -2,6 +2,7 @@ import Header from 'components/header'
 import Hero from 'components/hero'
 import Footer from 'components/footer'
 import About from 'components/about'
+import Lessons from 'components/lessons'
 import Parallax from 'components/parallax'
 import Faq from 'components/faq'
 import Contact from 'components/contact'
@@ -16,9 +17,11 @@ const Home = () => {
           <Hero />
         </div>
         <About />
-        <Parallax background="bg1" />
-        <Faq />
+        <Parallax background="bg4" />
+        <Lessons />
         <Parallax background="bg2" />
+        <Faq />
+        <Parallax background="bg3" />
         <Contact />
         <Map />
         <Footer />

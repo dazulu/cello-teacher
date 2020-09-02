@@ -1,7 +1,7 @@
 import ArrowDivider from './arrowdivider'
 
 interface Props {
-  background: 'bg1' | 'bg2'
+  background: 'bg2' | 'bg3' | 'bg4'
 }
 
 const parallax: React.FC<Props> = ({ background }) => {
@@ -20,12 +20,16 @@ const parallax: React.FC<Props> = ({ background }) => {
             position: relative;
           }
 
-          .parallax_bg1 {
-            background-image: url('/images/parallax1_800.jpg');
-          }
-
           .parallax_bg2 {
             background-image: url('/images/parallax2_800.jpg');
+          }
+
+          .parallax_bg3 {
+            background-image: url('/images/parallax3_800.jpg');
+          }
+
+          .parallax_bg4 {
+            background-image: url('/images/parallax4_800.jpg');
           }
 
           .parallax {
@@ -51,22 +55,30 @@ const parallax: React.FC<Props> = ({ background }) => {
           }
 
           @media only screen and (min-width: 800px) {
-            .parallax_bg1 {
-              background-image: url('/images/parallax1_1024.jpg');
+            .parallax_bg2 {
+              background-image: url('/images/parallax2_1280.jpg');
             }
 
-            .parallax_bg2 {
-              background-image: url('/images/parallax2_1200.jpg');
+            .parallax_bg3 {
+              background-image: url('/images/parallax3_1280.jpg');
+            }
+
+            .parallax_bg4 {
+              background-image: url('/images/parallax4_1280.jpg');
             }
           }
 
           @media only screen and (min-width: 1024px) {
-            .parallax_bg1 {
-              background-image: url('/images/parallax1_1280.jpg');
-            }
-
             .parallax_bg2 {
               background-image: url('/images/parallax2_1600.jpg');
+            }
+
+            .parallax_bg3 {
+              background-image: url('/images/parallax3_1600.jpg');
+            }
+
+            .parallax_bg4 {
+              background-image: url('/images/parallax4_1600.jpg');
             }
 
             .parallax {
