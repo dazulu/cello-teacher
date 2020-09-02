@@ -11,7 +11,6 @@ const parallax: React.FC<Props> = ({ background }) => {
     <>
       <div className="parallax__wrapper">
         <ArrowDivider type="solid" />
-        {bgClassName}
         <div className={`parallax ${bgClassName}`} />
         <ArrowDivider type="transparent" />
       </div>
