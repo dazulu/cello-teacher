@@ -37,8 +37,8 @@ const faq = () => {
         <div className="content__wrapper faq">
           <h2 className="title">Frequently Asked Questions</h2>
           <div className="grid">
-            {questions.map((q: Question) => (
-              <div>
+            {questions.map((q: Question, i) => (
+              <div key={i}>
                 <h3>{q.question}</h3>
                 <p>{q.answer}</p>
               </div>
