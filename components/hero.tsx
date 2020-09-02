@@ -31,7 +31,7 @@ const hero = () => {
         .intro {
           display: flex;
           align-items: center;
-          height: 85vh;
+          height: 80vh;
           position: relative;
           overflow: hidden;
         }
