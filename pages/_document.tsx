@@ -19,6 +19,11 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.png" />
 
           <link
+            href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+            rel="stylesheet"
+          />
+
+          <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"

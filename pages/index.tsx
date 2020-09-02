@@ -5,6 +5,7 @@ import About from 'components/about'
 import Parallax from 'components/parallax'
 import Faq from 'components/faq'
 import Contact from 'components/contact'
+import Map from 'components/map'
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         <Faq />
         <Parallax background="bg2" />
         <Contact />
+        <Map />
         <Footer />
       </div>
       <style jsx>
