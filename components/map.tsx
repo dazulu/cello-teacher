@@ -26,7 +26,7 @@ const map = () => {
 
   return (
     <>
-      <div className="map">
+      <div id="map" className="map">
         <ArrowDivider type="solid" />
         <h2 className="title">Location</h2>
         <div id="mapbox" className="mapbox"></div>

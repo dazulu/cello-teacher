@@ -1,4 +1,5 @@
 import BurgerButton from './burgerbutton'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const navigation = () => {
   return (
@@ -7,29 +8,55 @@ const navigation = () => {
         <nav role="navigation">
           <ul className="nav">
             <li className="nav__item">
-              <a className="nav__link" href="#">
+              <AnchorLink href="#about" offset="30" className="nav__link">
                 About
-              </a>
+              </AnchorLink>
             </li>
             <li className="nav__item">
-              <a className="nav__link" href="#">
+              <AnchorLink href="#lessons" offset="30" className="nav__link">
                 Lessons
-              </a>
+              </AnchorLink>
             </li>
             <li className="nav__item">
-              <a className="nav__link" href="#">
+              <AnchorLink href="#faq" offset="30" className="nav__link">
                 FAQ
-              </a>
+              </AnchorLink>
             </li>
             <li className="nav__item">
-              <a className="nav__link" href="#">
+              <AnchorLink href="#contact" offset="30" className="nav__link">
                 Contact
-              </a>
+              </AnchorLink>
+            </li>
+            <li className="nav__item">
+              <AnchorLink href="#map" offset="30" className="nav__link">
+                Location
+              </AnchorLink>
             </li>
           </ul>
         </nav>
         <BurgerButton />
       </div>
+      <style jsx global>{`
+        .nav__link {
+          align-items: center;
+          color: #fff !important;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          text-transform: uppercase;
+          text-decoration: none;
+          height: 100%;
+          font-size: 4.2vh;
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .nav__link {
+            height: 30px;
+            font-size: 16px;
+          }
+        }
+      `}</style>
       <style jsx>{`
         .nav {
           background: rgba(0, 0, 0, 0.88);
@@ -72,39 +99,12 @@ const navigation = () => {
           }
         }
 
-        .nav__link {
-          align-items: center;
-          color: #fff !important;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 700;
-          text-transform: uppercase;
-          text-decoration: none;
-          height: 100%;
-          font-size: 4.2vh;
-        }
-
         .nav__item {
           max-height: 13vh;
           flex: 1;
           transition-delay: 500ms;
           transform: translateY(15vh);
           transition: all 1s ease;
-        }
-
-        .social__icon {
-          fill: #fff;
-          height: 30px;
-          margin-right: 5px;
-        }
-
-        .youtube__icon {
-          height: 30px;
-        }
-
-        .patreon__icon {
-          height: 22px;
         }
 
         @media only screen and (min-width: 1024px) {
@@ -135,25 +135,6 @@ const navigation = () => {
             }
           }
 
-          .nav__link {
-            height: 30px;
-            font-size: 16px;
-          }
-
-          .social__icon {
-            fill: #fff;
-            height: 30px;
-            margin-right: 8px;
-          }
-
-          .youtube__icon {
-            height: 30px;
-          }
-
-          .patreon__icon {
-            height: 22px;
-          }
-
           .sticky {
             .navigation {
               position: relative;
@@ -161,10 +142,6 @@ const navigation = () => {
 
             .nav__link {
               color: #333 !important;
-            }
-
-            .social__icon {
-              fill: #333;
             }
           }
         }

@@ -1,4 +1,5 @@
 import ArrowDivider from './arrowdivider'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const hero = () => {
   return (
@@ -10,8 +11,13 @@ const hero = () => {
               <span className="pre">Some Text</span> <br />
               Goes Here
             </h2>
-            <button className="button">Find Out More</button>
-            <button className="button">View Pricing</button>
+            <AnchorLink href="#about" offset="30">
+              <button className="button">Find Out More</button>
+            </AnchorLink>
+
+            <AnchorLink href="#lessons" offset="30">
+              <button className="button">View Pricing</button>
+            </AnchorLink>
           </div>
           <img
             className="cutout"
