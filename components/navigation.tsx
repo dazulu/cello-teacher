@@ -90,6 +90,16 @@ const navigation = () => {
             height: 30px;
             font-size: 16px;
           }
+
+          .sticky {
+            .navigation {
+              position: relative;
+            }
+
+            .nav__link {
+              color: #333 !important;
+            }
+          }
         }
       `}</style>
       <style jsx>{`
@@ -167,16 +177,6 @@ const navigation = () => {
 
             &:last-child {
               margin-right: 0;
-            }
-          }
-
-          .sticky {
-            .navigation {
-              position: relative;
-            }
-
-            .nav__link {
-              color: #333 !important;
             }
           }
         }

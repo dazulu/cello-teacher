@@ -1,7 +1,44 @@
+import { useEffect } from 'react'
 import Logo from './logo'
 import Navigation from './navigation'
 
 const header = () => {
+  useEffect(() => {
+    const header = document.querySelector('.header__wrapper')
+    const sticky = 'sticky'
+    let ticking = false
+
+    const toggleStickyHeader = () => {
+      const scrollTop =
+        window.pageYOffset !== undefined
+          ? window.pageYOffset
+          : (
+              document.documentElement ||
+              document.body.parentNode ||
+              document.body
+            ).scrollTop
+      if (scrollTop > 80 && header) {
+        header.classList.add(sticky)
+        document.body.classList.add('nav-spacer')
+      } else if (header) {
+        header.classList.remove(sticky)
+        document.body.classList.remove('nav-spacer')
+      }
+    }
+
+    toggleStickyHeader()
+
+    document.addEventListener('scroll', function (e) {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          toggleStickyHeader()
+          ticking = false
+        })
+      }
+      ticking = true
+    })
+  })
+
   return (
     <>
       <div className="header__wrapper">
