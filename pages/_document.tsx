@@ -45,6 +45,10 @@ class MyDocument extends Document {
           <meta property="og:description" content="foo" />
           <meta property="og:url" content="foo" />
           <meta property="og:type" content="website" />
+
+          {/* todo remove on launch */}
+          <meta key="robots" name="robots" content="noindex,follow" />
+          <meta key="googlebot" name="googlebot" content="noindex,follow" />
         </Head>
         <body>
           <Main />
