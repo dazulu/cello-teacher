@@ -31,12 +31,12 @@ class MyDocument extends Document {
           <link
             rel="preload"
             as="style"
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
           />
           <noscript>
             <link
               rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
+              href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
             />
           </noscript>
 
