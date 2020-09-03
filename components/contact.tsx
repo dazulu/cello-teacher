@@ -15,20 +15,32 @@ const contact = () => {
 
     for (let i = 0; i < inputs.length; i++) {
       toggleFieldClass(inputs[i])
-      inputs[i].addEventListener('change', (event) => {
-        if (event.currentTarget instanceof HTMLInputElement) {
-          toggleFieldClass(event.currentTarget)
+      inputs[i].addEventListener(
+        'change',
+        (event) => {
+          if (event.currentTarget instanceof HTMLInputElement) {
+            toggleFieldClass(event.currentTarget)
+          }
+        },
+        {
+          passive: true,
         }
-      })
+      )
     }
 
     if (textarea) {
       toggleFieldClass(textarea)
-      textarea.addEventListener('change', (event) => {
-        if (event.currentTarget instanceof HTMLTextAreaElement) {
-          toggleFieldClass(event.currentTarget)
+      textarea.addEventListener(
+        'change',
+        (event) => {
+          if (event.currentTarget instanceof HTMLTextAreaElement) {
+            toggleFieldClass(event.currentTarget)
+          }
+        },
+        {
+          passive: true,
         }
-      })
+      )
     }
   }
 

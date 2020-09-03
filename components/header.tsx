@@ -28,15 +28,21 @@ const header = () => {
 
     toggleStickyHeader()
 
-    document.addEventListener('scroll', function (e) {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          toggleStickyHeader()
-          ticking = false
-        })
+    document.addEventListener(
+      'scroll',
+      function (e) {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            toggleStickyHeader()
+            ticking = false
+          })
+        }
+        ticking = true
+      },
+      {
+        passive: true,
       }
-      ticking = true
-    })
+    )
   })
 
   return (
