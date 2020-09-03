@@ -6,13 +6,13 @@ const footer = () => {
       <div className="content__wrapper footer">
         <p>
           <Link href="/">
-            <a>Datenschutz</a>
+            <a rel="noreferrer">Datenschutz</a>
           </Link>
         </p>
         -
         <p>
           <Link href="/">
-            <a>Impressum</a>
+            <a rel="noreferrer">Impressum</a>
           </Link>
         </p>
       </div>
