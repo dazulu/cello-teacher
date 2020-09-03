@@ -1,12 +1,15 @@
+import dynamic from 'next/dynamic'
+
 import Header from 'components/header'
 import Hero from 'components/hero'
 import Footer from 'components/footer'
 import About from 'components/about'
-import Lessons from 'components/lessons'
 import Parallax from 'components/parallax'
-import Faq from 'components/faq'
-import Contact from 'components/contact'
-import Map from 'components/map'
+
+const Lessons = dynamic(() => import('components/lessons'))
+const Faq = dynamic(() => import('components/faq'))
+const Contact = dynamic(() => import('components/contact'))
+const Map = dynamic(() => import('components/map'))
 
 const Home = () => {
   return (
