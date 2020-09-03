@@ -1,16 +1,23 @@
 import Head from 'next/head'
 import { AppProps } from 'next/app'
+import { Provider } from 'react-redux'
+
+import { useStore } from '../store'
 
 import 'styles/reset.scss'
 import 'styles/globals.scss'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const store = useStore(pageProps.initialReduxState)
+
   return (
     <>
-      <Head>
-        <title>Christoph Siska</title>
-      </Head>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Head>
+          <title>Christoph Siska</title>
+        </Head>
+        <Component {...pageProps} />
+      </Provider>
     </>
   )
 }

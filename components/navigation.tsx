@@ -1,22 +1,23 @@
-import BurgerButton from './burgerbutton'
+import { useDispatch, useSelector } from 'react-redux'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { clearAllBodyScrollLocks } from 'body-scroll-lock'
 
+import { ApplicationState } from 'store'
+import BurgerButton from './burgerbutton'
+
 const navigation = () => {
+  const dispatch = useDispatch()
+  const navisOpen = useSelector(({ showNav }: ApplicationState) => showNav)
+
   const closeNav = () => {
-    if (
-      document.querySelector('.menu__button')!.classList.contains('is--open')
-    ) {
-      document.querySelector('.menu__button')!.classList.remove('is--open')
-      document.querySelector('.nav')!.classList.remove('nav--open')
-      clearAllBodyScrollLocks()
-    }
+    dispatch({ type: 'CLOSE_NAV_MENU' })
+    clearAllBodyScrollLocks()
   }
   return (
     <>
       <div>
         <nav id="nav" role="navigation">
-          <ul className="nav">
+          <ul className={`nav ${navisOpen ? 'nav--open' : ''}`}>
             <li className="nav__item">
               <AnchorLink
                 href="#about"

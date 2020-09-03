@@ -1,48 +1,51 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 
+import { ApplicationState } from 'store'
+
 const burgerbutton = () => {
+  const dispatch = useDispatch()
+  const navisOpen = useSelector(({ showNav }: ApplicationState) => showNav)
   const [resizeThrottle, setResizeThrottle] = useState<boolean>(false)
 
   const toggleMenu = () => {
-    if (
-      !document.querySelector('.menu__button')!.classList.contains('is--open')
-    ) {
+    if (!navisOpen) {
+      dispatch({ type: 'OPEN_NAV_MENU' })
       disableBodyScroll(document.querySelector('#nav')!)
     } else {
+      dispatch({ type: 'CLOSE_NAV_MENU' })
       clearAllBodyScrollLocks()
     }
+  }
 
-    document.querySelector('.menu__button')!.classList.toggle('is--open')
-    document.querySelector('.nav')!.classList.toggle('nav--open')
+  const onResize = () => {
+    if (!resizeThrottle) {
+      setResizeThrottle(true)
+
+      if (window.innerWidth >= 1024 && navisOpen) {
+        dispatch({ type: 'CLOSE_NAV_MENU' })
+        clearAllBodyScrollLocks()
+      }
+
+      setTimeout(() => {
+        setResizeThrottle(false)
+      }, 200)
+    }
   }
 
   useEffect(() => {
-    const onResize = () => {
-      console.log('onResize')
-      if (!resizeThrottle) {
-        setResizeThrottle(true)
-
-        if (window.innerWidth >= 1024) {
-          document.querySelector('.menu__button')!.classList.remove('is--open')
-          document.querySelector('.nav')!.classList.remove('nav--open')
-          clearAllBodyScrollLocks()
-        }
-
-        setTimeout(() => {
-          setResizeThrottle(false)
-        }, 100)
-      }
-    }
-
     window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
   })
 
   return (
     <>
       <button
         onClick={toggleMenu}
-        className="menu__button"
+        className={`menu__button ${navisOpen ? 'is--open' : ''}`}
         aria-label="Toggle Menu"
       >
         <div className="button__line"></div>
