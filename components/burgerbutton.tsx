@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 
-import { ApplicationState } from 'store'
+import { ApplicationState, Action } from 'store'
 
 const burgerbutton = () => {
   const dispatch = useDispatch()
-  const navisOpen = useSelector(({ showNav }: ApplicationState) => showNav)
+  const navisOpen = useSelector<ApplicationState>(({ showNav }) => showNav)
   const [resizeThrottle, setResizeThrottle] = useState<boolean>(false)
 
   const toggleMenu = () => {
     if (!navisOpen) {
-      dispatch({ type: 'OPEN_NAV_MENU' })
+      dispatch<Action>({ type: 'OPEN_NAV_MENU' })
       disableBodyScroll(document.querySelector('#nav')!)
     } else {
-      dispatch({ type: 'CLOSE_NAV_MENU' })
+      dispatch<Action>({ type: 'CLOSE_NAV_MENU' })
       clearAllBodyScrollLocks()
     }
   }
@@ -24,7 +24,7 @@ const burgerbutton = () => {
       setResizeThrottle(true)
 
       if (window.innerWidth >= 1024 && navisOpen) {
-        dispatch({ type: 'CLOSE_NAV_MENU' })
+        dispatch<Action>({ type: 'CLOSE_NAV_MENU' })
         clearAllBodyScrollLocks()
       }
 

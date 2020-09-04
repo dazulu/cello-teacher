@@ -8,13 +8,17 @@ export interface ApplicationState {
   showNav: boolean
 }
 
+export interface Action {
+  type: 'OPEN_NAV_MENU' | 'CLOSE_NAV_MENU'
+}
+
 let store: Store<ApplicationState>
 
 const initialState = {
   showNav: false,
 }
 
-const reducer = (state = initialState, action: Record<string, any>) => {
+const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case 'OPEN_NAV_MENU':
       return {

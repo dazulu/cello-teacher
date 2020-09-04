@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { clearAllBodyScrollLocks } from 'body-scroll-lock'
 
-import { ApplicationState } from 'store'
+import { ApplicationState, Action } from 'store'
 import BurgerButton from './burgerbutton'
 
 const navigation = () => {
   const dispatch = useDispatch()
-  const navisOpen = useSelector(({ showNav }: ApplicationState) => showNav)
+  const navisOpen = useSelector<ApplicationState>(({ showNav }) => showNav)
 
   const closeNav = () => {
-    dispatch({ type: 'CLOSE_NAV_MENU' })
+    dispatch<Action>({ type: 'CLOSE_NAV_MENU' })
     clearAllBodyScrollLocks()
   }
   return (
