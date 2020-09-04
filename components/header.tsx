@@ -1,11 +1,17 @@
 import { useEffect } from 'react'
 import Logo from './logo'
 import Navigation from './navigation'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { ApplicationState, Action } from 'store'
 
 const header = () => {
+  const dispatch = useDispatch()
+  const navIsSticky = useSelector<ApplicationState>(
+    ({ navSticky }) => navSticky
+  )
+
   useEffect(() => {
-    const header = document.querySelector('.header__wrapper')
-    const sticky = 'sticky'
     let ticking = false
 
     const toggleStickyHeader = () => {
@@ -17,12 +23,11 @@ const header = () => {
               document.body.parentNode ||
               document.body
             ).scrollTop
-      if (scrollTop > 80 && header) {
-        header.classList.add(sticky)
-        document.body.classList.add('nav-spacer')
-      } else if (header) {
-        header.classList.remove(sticky)
-        document.body.classList.remove('nav-spacer')
+
+      if (scrollTop > 200) {
+        dispatch<Action>({ type: 'SET_NAV_STICKY' })
+      } else {
+        dispatch<Action>({ type: 'SET_NAV_NORMAL' })
       }
     }
 
@@ -47,7 +52,7 @@ const header = () => {
 
   return (
     <>
-      <div className="header__wrapper">
+      <div className={`header__wrapper ${navIsSticky ? 'sticky' : ''}`}>
         <div className="header">
           <Logo />
           <Navigation />
@@ -59,7 +64,6 @@ const header = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          transition: all 300ms ease;
           max-width: 1280px;
           margin: 0 auto;
           padding: 0 20px;
@@ -90,10 +94,6 @@ const header = () => {
             .header {
               height: 53px;
             }
-          }
-
-          .nav-spacer {
-            margin-top: 80px;
           }
         }
 

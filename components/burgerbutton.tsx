@@ -6,11 +6,11 @@ import { ApplicationState, Action } from 'store'
 
 const burgerbutton = () => {
   const dispatch = useDispatch()
-  const navisOpen = useSelector<ApplicationState>(({ showNav }) => showNav)
+  const navIsOpen = useSelector<ApplicationState>(({ showNav }) => showNav)
   const [resizeThrottle, setResizeThrottle] = useState<boolean>(false)
 
   const toggleMenu = () => {
-    if (!navisOpen) {
+    if (!navIsOpen) {
       dispatch<Action>({ type: 'OPEN_NAV_MENU' })
       disableBodyScroll(document.querySelector('#nav')!)
     } else {
@@ -23,7 +23,7 @@ const burgerbutton = () => {
     if (!resizeThrottle) {
       setResizeThrottle(true)
 
-      if (window.innerWidth >= 1024 && navisOpen) {
+      if (window.innerWidth >= 1024 && navIsOpen) {
         dispatch<Action>({ type: 'CLOSE_NAV_MENU' })
         clearAllBodyScrollLocks()
       }
@@ -47,7 +47,7 @@ const burgerbutton = () => {
     <>
       <button
         onClick={toggleMenu}
-        className={`menu__button ${navisOpen ? 'is--open' : ''}`}
+        className={`menu__button ${navIsOpen ? 'is--open' : ''}`}
         aria-label="Toggle Menu"
       >
         <div className="button__line"></div>

@@ -1,4 +1,7 @@
 import dynamic from 'next/dynamic'
+import { useSelector } from 'react-redux'
+
+import { ApplicationState } from 'store'
 
 import Header from 'components/header'
 import Hero from 'components/hero'
@@ -13,11 +16,15 @@ const Contact = dynamic(() => import('components/contact'))
 const Map = dynamic(() => import('components/map'))
 
 const Home = () => {
+  const navIsSticky = useSelector<ApplicationState>(
+    ({ navSticky }) => navSticky
+  )
+
   return (
     <>
       {process.env.NODE_ENV === 'development' ? (
         <div>
-          <div className="background">
+          <div className={`background ${navIsSticky ? 'nav-spacer' : ''}`}>
             <Header />
             <Hero />
           </div>
@@ -44,6 +51,11 @@ const Home = () => {
           <Logo />
         </div>
       )}
+      <style jsx global>{`
+        .nav-spacer {
+          padding-top: 80px;
+        }
+      `}</style>
       <style jsx>
         {`
           .background {

@@ -7,7 +7,7 @@ import BurgerButton from './burgerbutton'
 
 const navigation = () => {
   const dispatch = useDispatch()
-  const navisOpen = useSelector<ApplicationState>(({ showNav }) => showNav)
+  const navIsOpen = useSelector<ApplicationState>(({ showNav }) => showNav)
 
   const closeNav = () => {
     dispatch<Action>({ type: 'CLOSE_NAV_MENU' })
@@ -17,7 +17,7 @@ const navigation = () => {
     <>
       <div>
         <nav id="nav" role="navigation">
-          <ul className={`nav ${navisOpen ? 'nav--open' : ''}`}>
+          <ul className={`nav ${navIsOpen ? 'nav--open' : ''}`}>
             <li className="nav__item">
               <AnchorLink
                 href="#about"

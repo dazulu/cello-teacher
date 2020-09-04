@@ -6,16 +6,18 @@ export type RootState = ReturnType<typeof reducer>
 
 export interface ApplicationState {
   showNav: boolean
+  navSticky: boolean
 }
 
 export interface Action {
-  type: 'OPEN_NAV_MENU' | 'CLOSE_NAV_MENU'
+  type: 'OPEN_NAV_MENU' | 'CLOSE_NAV_MENU' | 'SET_NAV_STICKY' | 'SET_NAV_NORMAL'
 }
 
 let store: Store<ApplicationState>
 
 const initialState = {
   showNav: false,
+  navSticky: false,
 }
 
 const reducer = (state = initialState, action: Action) => {
@@ -30,6 +32,18 @@ const reducer = (state = initialState, action: Action) => {
       return {
         ...state,
         showNav: false,
+      }
+
+    case 'SET_NAV_STICKY':
+      return {
+        ...state,
+        navSticky: true,
+      }
+
+    case 'SET_NAV_NORMAL':
+      return {
+        ...state,
+        navSticky: false,
       }
 
     default:
