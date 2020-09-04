@@ -78,7 +78,6 @@ const map = () => {
   return (
     <>
       <div id="map" className="map">
-        <p id="afaf"></p>
         <ArrowDivider type="solid" />
         <h2 className="title">Location</h2>
         <div className="buttons">
