@@ -5,6 +5,7 @@ import Hero from 'components/hero'
 import Footer from 'components/footer'
 import About from 'components/about'
 import Parallax from 'components/parallax'
+import Logo from 'components/logo'
 
 const Lessons = dynamic(() => import('components/lessons'))
 const Faq = dynamic(() => import('components/faq'))
@@ -14,21 +15,35 @@ const Map = dynamic(() => import('components/map'))
 const Home = () => {
   return (
     <>
-      <div>
-        <div className="background">
-          <Header />
-          <Hero />
+      {process.env.NODE_ENV === 'development' ? (
+        <div>
+          <div className="background">
+            <Header />
+            <Hero />
+          </div>
+          <About />
+          <Parallax background="bg4" />
+          <Lessons />
+          <Parallax background="bg2" />
+          <Faq />
+          <Parallax background="bg3" />
+          <Contact />
+          <Map />
+          <Footer />
         </div>
-        <About />
-        <Parallax background="bg4" />
-        <Lessons />
-        <Parallax background="bg2" />
-        <Faq />
-        <Parallax background="bg3" />
-        <Contact />
-        <Map />
-        <Footer />
-      </div>
+      ) : (
+        <div
+          style={{
+            background: '#111',
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Logo />
+        </div>
+      )}
       <style jsx>
         {`
           .background {
