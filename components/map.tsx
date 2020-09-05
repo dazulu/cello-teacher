@@ -13,8 +13,7 @@ interface Location {
 
 type Locations = Location[]
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoibWFwYm94Y2VsbG8iLCJhIjoiY2tlbGw3OGVzMGkxdDJzbXF2OWJqeXFlOCJ9.sVXb3RDQsBp2pfgXtIiDIQ'
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX!
 
 const locations: Locations = [
   {
