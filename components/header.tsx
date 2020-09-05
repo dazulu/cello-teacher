@@ -24,7 +24,7 @@ const header = () => {
               document.body
             ).scrollTop
 
-      if (scrollTop > 200) {
+      if (scrollTop > 500) {
         dispatch<Action>({ type: 'SET_NAV_STICKY' })
       } else {
         dispatch<Action>({ type: 'SET_NAV_NORMAL' })
