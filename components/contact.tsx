@@ -56,14 +56,45 @@ const contact = () => {
 
           <div className="section">
             <div className="text">
-              <p>
-                Christoph Siska
-                <br />
-                Hilprechtshausen 7<br />
-                37581 Bad Gandersheim
-              </p>
-              <p>Telefon 0160 92723100</p>
-              <p>Christoph-Siska@web.de</p>
+              <p>Christoph Siska</p>
+              <address className="contact-details">
+                <p>
+                  <strong>Telefon: </strong>
+                  <a href="tel:+4916092723100" rel="noopener noreferrer">
+                    0160 92723100
+                  </a>
+                </p>
+                <p>
+                  <strong>Email: </strong>
+                  <a href="mailto:jim@rock.com" rel="noopener noreferrer">
+                    Christoph-Siska@web.de
+                  </a>
+                </p>
+              </address>
+              <h3>Orte</h3>
+              <address>
+                <h4>Hilprechtshausen</h4>
+                <address></address>
+                <p>
+                  Hilprechtshausen 7,
+                  <br />
+                  37581 Bad Gandersheim
+                </p>
+              </address>
+              <address>
+                <h4>Braunschweig</h4>
+                <p>
+                  <a
+                    href="http://www.musikschule-musikuss-braunschweig.de/"
+                    rel="noopener"
+                  >
+                    Musikuß Musikschule
+                  </a>
+                  , <br />
+                  Karlstraße 35,
+                  <br /> 38106 Braunschweig
+                </p>
+              </address>
             </div>
 
             <div className="form">
@@ -119,6 +150,16 @@ const contact = () => {
 
         .text {
           margin-bottom: 60px;
+        }
+
+        address {
+          font-style: normal;
+        }
+
+        .contact-details {
+          p:not(:last-child) {
+            margin-bottom: 10px;
+          }
         }
 
         @media only screen and (min-width: 800px) {
@@ -209,6 +250,14 @@ const contact = () => {
             font-size: 0.8rem;
             transform: translateY(8px);
           }
+        }
+
+        a {
+          color: #2677cc;
+        }
+
+        strong {
+          font-weight: 700;
         }
       `}</style>
     </>
