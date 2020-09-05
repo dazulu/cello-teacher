@@ -72,23 +72,12 @@ const map = () => {
       locations.forEach((l: Location) => {
         new mapboxgl.Marker().setLngLat(l.coords).addTo(map)
       })
-
-      map.on('click', function (e) {
-        document.getElementById('info')!.innerHTML =
-          // e.point is the x, y coordinates of the mousemove event relative
-          // to the top-left corner of the map
-          JSON.stringify(e.point) +
-          '<br />' +
-          // e.lngLat is the longitude, latitude geographical position of the event
-          JSON.stringify(e.lngLat.wrap())
-      })
     }
   }, [rendered])
 
   return (
     <>
       <div id="map" className="map">
-        <div id="info"></div>
         <ArrowDivider type="solid" />
         <h2 className="title">Location</h2>
         <div className="buttons">
