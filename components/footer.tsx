@@ -6,13 +6,13 @@ const footer = () => {
       <footer className="content__wrapper footer">
         <p>
           <Link href="/">
-            <a rel="noreferrer">Datenschutz</a>
+            <a rel="noreferrer nofollow">Datenschutz</a>
           </Link>
         </p>
         -
         <p>
           <Link href="/">
-            <a rel="noreferrer">Impressum</a>
+            <a rel="noreferrer nofollow">Impressum</a>
           </Link>
         </p>
       </footer>
@@ -25,8 +25,12 @@ const footer = () => {
           align-items: center;
 
           p {
-            font-size: 16px;
-            margin: 0 15px;
+            font-size: 0.8em;
+            margin: 0 5px;
+
+            a {
+              color: initial;
+            }
           }
         }
       `}</style>

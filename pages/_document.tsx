@@ -33,7 +33,7 @@ class MyDocument extends Document {
           <link
             rel="preload"
             as="style"
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap"
           />
 
           <meta property="og:title" content="foo" />

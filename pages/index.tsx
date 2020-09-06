@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import { useSelector } from 'react-redux'
 
 import { ApplicationState } from 'store'

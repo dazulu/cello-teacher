@@ -35,7 +35,7 @@ const faq = () => {
     <>
       <div id="faq" className="padding__wrapper">
         <section className="content__wrapper faq">
-          <h2 className="title">Frequently Asked Questions</h2>
+          <h2 className="title">Häufige Fragen</h2>
           <div className="grid">
             {questions.map((q: Question, i) => (
               <div key={i}>

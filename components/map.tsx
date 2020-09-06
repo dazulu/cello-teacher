@@ -85,7 +85,7 @@ const map = () => {
     <>
       <div id="map" className="map">
         <ArrowDivider type="solid" />
-        <h2 className="title">Location</h2>
+        <h2 className="title">Unterrichtsorte</h2>
         <div className="buttons">
           {locations.map((l: Location, index) => {
             return (
@@ -133,11 +133,11 @@ const map = () => {
 
         .title {
           position: absolute;
-          top: 80px;
-          transform: translateX(50vw);
-          margin-left: -80px;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          text-align: center;
           pointer-events: none;
-          width: 160px;
           z-index: 1;
         }
 

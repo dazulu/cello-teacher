@@ -52,52 +52,61 @@ const contact = () => {
     <>
       <div id="contact" className="padding__wrapper">
         <div className="content__wrapper contact">
-          <h2 className="title">Contact</h2>
+          <h2 className="title">Kontakt</h2>
 
           <div className="section">
             <div className="text">
-              <p>Christoph Siska</p>
-              <address className="contact-details">
-                <p>
-                  <strong>Telefon: </strong>
-                  <a href="tel:+4916092723100" rel="noopener noreferrer">
-                    0160 92723100
-                  </a>
-                </p>
-                <p>
-                  <strong>Email: </strong>
-                  <a href="mailto:jim@rock.com" rel="noopener noreferrer">
-                    Christoph-Siska@web.de
-                  </a>
-                </p>
-              </address>
-              <h3>Orte</h3>
-              <address>
-                <h4>Hilprechtshausen</h4>
-                <address></address>
-                <p>
-                  Hilprechtshausen 7,
-                  <br />
-                  37581 Bad Gandersheim
-                </p>
-              </address>
-              <address>
-                <h4>Braunschweig</h4>
-                <p>
-                  <a
-                    href="http://www.musikschule-musikuss-braunschweig.de/"
-                    rel="noopener"
-                  >
-                    Musikuß Musikschule
-                  </a>
-                  , <br />
-                  Karlstraße 35,
-                  <br /> 38106 Braunschweig
-                </p>
-              </address>
+              <section>
+                <address className="contact-details">
+                  <p>
+                    <strong>Christoph Siska</strong> | Cellist &amp;
+                    Intrumentallehrer
+                  </p>
+                  <p>
+                    <strong>Telefon: </strong>
+                    <a href="tel:+4916092723100" rel="noopener noreferrer">
+                      0160 92723100
+                    </a>
+                  </p>
+                  <p>
+                    <strong>Email: </strong>
+                    <a href="mailto:jim@rock.com" rel="noopener noreferrer">
+                      Christoph-Siska@web.de
+                    </a>
+                  </p>
+                </address>
+              </section>
+              <section>
+                <h3>Unterrichtsorte</h3>
+                <address>
+                  <p>
+                    Hilprechtshausen 7
+                    <br />
+                    37581 Bad Gandersheim
+                    <br />
+                    <span className="direction">
+                      (6 km nordwestlich von Bad Gandersheim)
+                    </span>
+                  </p>
+                </address>
+                <address>
+                  <p>
+                    <a
+                      href="http://www.musikschule-musikuss-braunschweig.de/"
+                      rel="noopener"
+                    >
+                      Musikschule Musikuß
+                    </a>
+                    <br />
+                    Karlstraße 35
+                    <br /> 38106 Braunschweig
+                  </p>
+                </address>
+              </section>
             </div>
 
-            <div className="form">
+            <section className="form">
+              <h3>Formular</h3>
               <form
                 name="contact"
                 method="POST"
@@ -120,21 +129,24 @@ const contact = () => {
                 </div>
                 <div>
                   <input name="email" type="email" required />
-                  <label htmlFor="email">Email*</label>
+                  <label htmlFor="email">E-Mail*</label>
                 </div>
                 <div>
                   <input name="phone" type="tel" />
-                  <label htmlFor="phone">Phone</label>
+                  <label htmlFor="phone">Telefon*</label>
                 </div>
                 <div>
                   <textarea name="message" required></textarea>
-                  <label htmlFor="message">Message*</label>
+                  <label htmlFor="message">Nachricht*</label>
                 </div>
                 <button className="button" type="submit">
-                  Send
+                  Senden
                 </button>
               </form>
-            </div>
+              <p className="pflichtfeld">
+                <strong>*</strong> Pflichtfeld
+              </p>
+            </section>
           </div>
         </div>
       </div>
@@ -162,27 +174,13 @@ const contact = () => {
           }
         }
 
-        @media only screen and (min-width: 800px) {
-          .section {
-            display: flex;
-          }
-
-          .text {
-            width: 50%;
-            margin-right: 10%;
-            margin-bottom: 0;
-          }
-
-          .form {
-            top: -20px;
-            position: relative;
-            width: 40%;
-          }
+        .direction {
+          display: block;
+          font-size: 1rem;
         }
 
         form {
           max-width: 500px;
-          margin: 0 auto;
           position: relative;
           width: 100%;
 
@@ -212,20 +210,21 @@ const contact = () => {
 
         .button {
           color: #fff;
+          cursor: pointer;
           font-size: 1.2em;
           border: 0;
-          background: darken(#47cf73, 15%);
+          background: #386b80;
           background-size: 27px;
           padding: 15px;
 
           &:hover {
-            background-color: darken(#47cf73, 20%);
+            background-color: darken(#386b80, 5%);
           }
         }
 
         input,
         textarea {
-          background: #35495e;
+          background: #393939;
           border: none;
           color: #fff;
           margin-bottom: 20px;
@@ -252,12 +251,33 @@ const contact = () => {
           }
         }
 
-        a {
-          color: #2677cc;
+        .pflichtfeld {
+          font-size: 0.9em;
+          margin-top: 10px;
         }
 
-        strong {
-          font-weight: 700;
+        @media only screen and (min-width: 800px) {
+          .section {
+            display: flex;
+          }
+
+          .text {
+            width: 50%;
+            margin-right: 10%;
+            margin-bottom: 0;
+          }
+
+          .form {
+            top: -20px;
+            position: relative;
+            width: 40%;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .form {
+            margin: 0 auto;
+          }
         }
       `}</style>
     </>

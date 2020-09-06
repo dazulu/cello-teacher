@@ -25,7 +25,7 @@ const navigation = () => {
                 className="nav__link"
                 onClick={closeNav}
               >
-                About
+                Über mich
               </AnchorLink>
             </li>
             <li className="nav__item">
@@ -35,7 +35,7 @@ const navigation = () => {
                 className="nav__link"
                 onClick={closeNav}
               >
-                Lessons
+                Unterricht
               </AnchorLink>
             </li>
             <li className="nav__item">
@@ -45,7 +45,7 @@ const navigation = () => {
                 className="nav__link"
                 onClick={closeNav}
               >
-                FAQ
+                Häufige Fragen
               </AnchorLink>
             </li>
             <li className="nav__item">
@@ -55,7 +55,7 @@ const navigation = () => {
                 className="nav__link"
                 onClick={closeNav}
               >
-                Contact
+                Kontakt
               </AnchorLink>
             </li>
             <li className="nav__item">
@@ -65,7 +65,7 @@ const navigation = () => {
                 className="nav__link"
                 onClick={closeNav}
               >
-                Location
+                Anfahrt
               </AnchorLink>
             </li>
           </ul>
@@ -135,7 +135,6 @@ const navigation = () => {
         }
 
         .nav--open {
-          border-bottom: 10px solid #e46663;
           transform: translateY(0);
           pointer-events: auto;
           opacity: 1;

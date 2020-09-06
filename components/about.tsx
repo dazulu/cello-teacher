@@ -3,29 +3,31 @@ const about = () => {
     <>
       <div id="about" className="padding__wrapper">
         <div className="content__wrapper about">
-          <div className="text">
-            <h2>About Christoph</h2>
+          <section className="text">
+            <h2>Der Cellolehrer</h2>
             <p>
-              Hey there! I'm Adrian Payne. Born and raised in Ireland but now
-              living in the beautiful city of Hamburg, Germany.
+              Christoph Siska, Jahrgang 1964, Diplom-Kulturwissenschaftler
+              (Schwerpunkt Musik). Neben seiner Tätigkeit als Instrumentallehrer
+              arbeitet er in verschiedenen Musikprojekten mit Kindern und
+              Erwachsenen.
             </p>
             <p>
-              I've always had an interest in singing and musical theatre though
-              never actually got around to doing all that much with it up until
-              now. I recently started taking singing lessons and want to share
-              the results with you as I go along. Maybe one day I can quit the
-              day job and do this full time! Right? Right??
+              Quer durch alle musikalischen Stilrichtungen erprobt er die „Viel
+              Sait”igkeit seines Instrumentes und gibt diese Spielfreude an
+              seine Schüler und sein Publikum weiter.
             </p>
-          </div>
+            <h4>Performance</h4>
+            <ul>
+              <li>Duo Rosshaar - Gefiddel auf acht Saiten</li>
+              <li>
+                Duo Eckert &amp; Siska - Querflöte oder wahlweise Klarinette und
+                Cello
+              </li>
+            </ul>
+          </section>
 
           <div className="video">
-            <div className="embed-container">
-              <iframe
-                src="https://www.youtube.com/embed/kBYbkUJE53A"
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <div className="embed-container">Photo</div>
           </div>
         </div>
       </div>
