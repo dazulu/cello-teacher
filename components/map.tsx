@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import mapboxgl, { Map } from 'mapbox-gl'
 import ArrowDivider from './arrowdivider'
@@ -30,7 +31,7 @@ const LocationIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 297 297"
-    role="presentation"
+    aria-hidden="true"
     className="location-icon"
   >
     <path d="M148.5 0A148.6 148.6 0 00.1 148.5C0 230.4 66.7 297 148.5 297s148.4-66.6 148.4-148.5S230.3 0 148.5 0zm10.1 276.4v-61.3a10.1 10.1 0 00-20.2 0v61.3A128.5 128.5 0 0120.7 158.6h61.2a10.1 10.1 0 000-20.2H20.7c4.9-62.7 55-112.9 117.7-117.8v61.3a10.1 10.1 0 0020.2 0V20.6c62.7 4.9 112.8 55 117.7 117.8h-61.2a10.1 10.1 0 000 20.2h61.2c-4.9 62.7-55 112.9-117.7 117.8z" />
@@ -53,6 +54,12 @@ const map = () => {
   }
 
   useEffect(() => {
+    // Add mapbox css after render
+    const tag = document.createElement('link')
+    tag.rel = 'stylesheet'
+    tag.href = 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css'
+    document.getElementsByTagName('head')[0].appendChild(tag)
+
     if (!rendered) {
       setMap(
         new mapboxgl.Map({

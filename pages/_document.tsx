@@ -19,26 +19,22 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.png" />
 
           <link
-            href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
-            rel="stylesheet"
-          />
-
-          <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
+
+          <link
+            rel="preconnect"
+            href="https://api.mapbox.com"
+            crossOrigin="anonymous"
+          />
+
           <link
             rel="preload"
             as="style"
             href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
           />
-          <noscript>
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
-            />
-          </noscript>
 
           <meta property="og:title" content="foo" />
           <meta property="og:image" content="foo" />

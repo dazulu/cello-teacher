@@ -1,27 +1,41 @@
+import { useEffect } from 'react'
 import ArrowDivider from './arrowdivider'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+// Ä Ö Ü ä ö ü
 
 const hero = () => {
+  useEffect(() => {
+    // Loading image on component mount and applying animated css on load
+    const cutoutImage = document.querySelector('.cutout') as HTMLImageElement
+    const highResFile = '/images/christoph-cutout.png'
+    const imageLoader = new Image()
+    imageLoader.onload = () => {
+      cutoutImage.src = highResFile
+      cutoutImage.classList.add('cutout--loaded')
+    }
+    imageLoader.src = highResFile
+  })
+
   return (
     <>
       <div>
         <div className="content__wrapper intro">
-          <div>
-            <h2 className="heading">
-              <span className="pre">Some Text</span> <br />
-              Goes Here
+          <div className="content">
+            <h2 className="title">
+              Cello lernen <span className="sub">muss nicht schwer sein</span>
             </h2>
+
             <AnchorLink href="#about" offset="30">
-              <button className="button">Find Out More</button>
+              <button className="button">Über mich</button>
             </AnchorLink>
 
             <AnchorLink href="#lessons" offset="30">
-              <button className="button">View Pricing</button>
+              <button className="button">Cello Unterricht</button>
             </AnchorLink>
           </div>
           <img
             className="cutout"
-            src="/images/christoph.png"
+            src="/images/placeholder-cutout.png"
             alt="Christoph Siska"
           />
         </div>
@@ -36,9 +50,9 @@ const hero = () => {
           overflow: hidden;
         }
 
-        .heading {
+        .title {
           margin: -70% 0 40px 0;
-          font-size: 4rem;
+          font-size: 3.7rem;
           color: #fff;
           letter-spacing: -3px;
           line-height: 3rem;
@@ -47,7 +61,8 @@ const hero = () => {
           position: relative;
         }
 
-        .pre {
+        .sub {
+          display: block;
           font-size: 2rem;
         }
 
@@ -75,23 +90,50 @@ const hero = () => {
           right: -160px;
           bottom: -300px;
           max-width: 200vw;
+          opacity: 0;
+          transform: translateY(40px);
+          transition: transform 600ms ease-out, opacity 600ms ease-out;
           width: 680px;
         }
 
+        .cutout--loaded {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @media only screen and (min-width: 500px) {
+          .title {
+            font-size: 4.2rem;
+          }
+
+          .sub {
+            font-size: 2.2rem;
+          }
+        }
+
         @media only screen and (min-width: 768px) {
-          .heading {
-            font-size: 5.2rem;
+          .title {
+            font-size: 4.6rem;
             line-height: 3.3rem;
             margin-top: 0;
           }
 
-          .pre {
-            font-size: 2.8rem;
+          .sub {
+            font-size: 2.6rem;
           }
 
           .cutout {
             right: -110px;
             bottom: -90px;
+          }
+
+          .intro {
+            height: 68vh;
+            min-height: 600px;
+          }
+
+          .content {
+            margin-top: 100px;
           }
         }
 
@@ -100,12 +142,6 @@ const hero = () => {
             right: 40px;
             bottom: -110px;
             width: 700px;
-          }
-        }
-
-        @media only screen and (min-width: 1024px) {
-          .intro {
-            height: 75vh;
           }
         }
       `}</style>

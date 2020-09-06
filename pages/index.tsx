@@ -9,11 +9,10 @@ import Footer from 'components/footer'
 import About from 'components/about'
 import Parallax from 'components/parallax'
 import Logo from 'components/logo'
-
-const Lessons = dynamic(() => import('components/lessons'))
-const Faq = dynamic(() => import('components/faq'))
-const Contact = dynamic(() => import('components/contact'))
-const Map = dynamic(() => import('components/map'))
+import Lessons from 'components/lessons'
+import Faq from 'components/faq'
+import Contact from 'components/contact'
+import Map from 'components/map'
 
 const Home = () => {
   const navIsSticky = useSelector<ApplicationState>(
@@ -23,7 +22,7 @@ const Home = () => {
   return (
     <>
       {process.env.NODE_ENV === 'development' ? (
-        <div>
+        <main>
           <div className={`background ${navIsSticky ? 'nav-spacer' : ''}`}>
             <Header />
             <Hero />
@@ -37,7 +36,7 @@ const Home = () => {
           <Contact />
           <Map />
           <Footer />
-        </div>
+        </main>
       ) : (
         <div
           style={{
