@@ -38,6 +38,10 @@ const about = () => {
           padding-bottom: 60px;
         }
 
+        h2 {
+          margin-bottom: 20px;
+        }
+
         .text {
           margin-bottom: 40px;
         }
