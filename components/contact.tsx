@@ -133,7 +133,7 @@ const contact = () => {
                 </div>
                 <div>
                   <input name="phone" type="tel" />
-                  <label htmlFor="phone">Telefon*</label>
+                  <label htmlFor="phone">Telefon</label>
                 </div>
                 <div>
                   <textarea name="message" required></textarea>
