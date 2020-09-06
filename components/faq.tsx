@@ -34,7 +34,7 @@ const faq = () => {
   return (
     <>
       <div id="faq" className="padding__wrapper">
-        <div className="content__wrapper faq">
+        <section className="content__wrapper faq">
           <h2 className="title">Frequently Asked Questions</h2>
           <div className="grid">
             {questions.map((q: Question, i) => (
@@ -44,7 +44,7 @@ const faq = () => {
               </div>
             ))}
           </div>
-        </div>
+        </section>
       </div>
       <style jsx>{`
         .title {

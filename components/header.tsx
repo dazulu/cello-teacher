@@ -53,10 +53,10 @@ const header = () => {
   return (
     <>
       <div className={`header__wrapper ${navIsSticky ? 'sticky' : ''}`}>
-        <div className="header">
+        <header className="header">
           <Logo />
           <Navigation />
-        </div>
+        </header>
       </div>
       <style jsx>{`
         .header {

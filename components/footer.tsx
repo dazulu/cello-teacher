@@ -3,7 +3,7 @@ import Link from 'next/link'
 const footer = () => {
   return (
     <>
-      <div className="content__wrapper footer">
+      <footer className="content__wrapper footer">
         <p>
           <Link href="/">
             <a rel="noreferrer">Datenschutz</a>
@@ -15,7 +15,7 @@ const footer = () => {
             <a rel="noreferrer">Impressum</a>
           </Link>
         </p>
-      </div>
+      </footer>
       <style jsx>{`
         .footer {
           display: flex;
