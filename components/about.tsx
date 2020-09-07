@@ -26,8 +26,31 @@ const about = () => {
             </ul>
           </section>
 
-          <div className="video">
-            <div className="embed-container">Photo</div>
+          <div className="image">
+            <picture>
+              <source
+                srcSet="/images/playing_large.avif"
+                media="(min-width: 800px)"
+                type="image/avif"
+              />
+              <source
+                srcSet="/images/playing_large.webp"
+                media="(min-width: 800px)"
+                type="image/webp"
+              />
+              <source
+                srcSet="/images/playing_large.jpg"
+                media="(min-width: 800px)"
+                type="image/jpeg"
+              />
+              <source srcSet="/images/playing_small.avif" type="image/avif" />
+              <source srcSet="/images/playing_small.webp" type="image/webp" />
+              <img
+                src="/images/playing_small.jpg"
+                alt="Christoph performing cello"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -46,22 +69,14 @@ const about = () => {
           margin-bottom: 40px;
         }
 
-        .embed-container {
-          position: relative;
-          padding-bottom: 56.25%;
-          height: 0;
-          overflow: hidden;
-          max-width: 100%;
-        }
-
-        .embed-container iframe,
-        .embed-container object,
-        .embed-container embed {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+        @media only screen and (max-width: 800px) {
+          .image {
+            img {
+              display: block;
+              width: 60vw;
+              margin: 0 auto;
+            }
+          }
         }
 
         @media only screen and (min-width: 800px) {
@@ -75,10 +90,14 @@ const about = () => {
             margin-bottom: 0;
           }
 
-          .video {
-            position: relative;
-            margin-top: 2%;
+          .image {
             flex: 1;
+
+            img {
+              margin-left: auto;
+              margin-right: 0;
+              max-width: 400px;
+            }
           }
         }
       `}</style>
