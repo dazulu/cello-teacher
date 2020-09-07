@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap');
 
-:root {
-  --padding: 20px;
-}
-
 html,
 body {
   font-family: 'Merriweather', serif;
+  width: 100%;
 }
 
 .padding__wrapper {
@@ -52,6 +49,10 @@ p {
 
 a {
   color: #2d6db0;
+}
+
+address {
+  font-style: normal;
 }
 
 strong {
