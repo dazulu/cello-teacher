@@ -106,10 +106,11 @@ const hero = () => {
           position: absolute;
           right: -160px;
           bottom: -300px;
-          max-width: 200vw;
+          filter: saturate(150%);
           opacity: 0;
           transform: translateY(40px);
           transition: transform 600ms ease-out, opacity 600ms ease-out;
+          max-width: 200vw;
           width: 680px;
         }
 
