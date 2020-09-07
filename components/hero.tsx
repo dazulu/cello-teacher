@@ -1,19 +1,36 @@
 import { useEffect } from 'react'
 import ArrowDivider from './arrowdivider'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-// Ä Ö Ü ä ö ü
+
+type Extensions = 'webp' | 'png'
 
 const hero = () => {
-  useEffect(() => {
-    // Loading image on component mount and applying animated css on load
+  const loadImage = (ext: Extensions) => {
     const cutoutImage = document.querySelector('.cutout') as HTMLImageElement
-    const highResFile = '/images/christoph-cutout.png'
+    const highResImage = `/images/christoph-cutout.${ext}`
     const imageLoader = new Image()
+
     imageLoader.onload = () => {
-      cutoutImage.src = highResFile
+      cutoutImage.src = highResImage
       cutoutImage.classList.add('cutout--loaded')
     }
-    imageLoader.src = highResFile
+
+    imageLoader.src = highResImage
+  }
+
+  useEffect(() => {
+    new Promise((resolve, reject) => {
+      const img = new Image()
+      img.onload = () => {
+        resolve()
+      }
+      img.onerror = () => {
+        reject()
+      }
+      img.src = '/images/test.webp'
+    })
+      .then(() => loadImage('webp'))
+      .catch(() => loadImage('png'))
   })
 
   return (
