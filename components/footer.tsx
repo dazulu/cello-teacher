@@ -1,20 +1,15 @@
-import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { Action } from 'store'
 
 const footer = () => {
+  const dispatch = useDispatch()
+  const showModal = () => dispatch<Action>({ type: 'OPEN_MODAL' })
+
   return (
     <>
       <footer className="content__wrapper footer">
-        <p>
-          <Link href="/">
-            <a rel="noreferrer nofollow">Datenschutz</a>
-          </Link>
-        </p>
-        -
-        <p>
-          <Link href="/">
-            <a rel="noreferrer nofollow">Impressum</a>
-          </Link>
-        </p>
+        <button onClick={showModal}>Datenschutz</button>-
+        <button onClick={showModal}>Impressum</button>
       </footer>
       <style jsx>{`
         .footer {
@@ -24,12 +19,14 @@ const footer = () => {
           justify-content: center;
           align-items: center;
 
-          p {
-            font-size: 0.8em;
-            margin: 0 5px;
+          button {
+            background: none;
+            border: none;
+            text-decoration: underline;
+            cursor: pointer;
 
-            a {
-              color: initial;
+            &:hover {
+              text-decoration: none;
             }
           }
         }

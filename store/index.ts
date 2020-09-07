@@ -6,17 +6,25 @@ export type RootState = ReturnType<typeof reducer>
 
 export interface ApplicationState {
   showNav: boolean
+  showModal: boolean
   navSticky: boolean
 }
 
 export interface Action {
-  type: 'OPEN_NAV_MENU' | 'CLOSE_NAV_MENU' | 'SET_NAV_STICKY' | 'SET_NAV_NORMAL'
+  type:
+    | 'OPEN_NAV_MENU'
+    | 'CLOSE_NAV_MENU'
+    | 'SET_NAV_STICKY'
+    | 'SET_NAV_NORMAL'
+    | 'OPEN_MODAL'
+    | 'CLOSE_MODAL'
 }
 
 let store: Store<ApplicationState>
 
 const initialState = {
   showNav: false,
+  showModal: false,
   navSticky: false,
 }
 
@@ -44,6 +52,18 @@ const reducer = (state = initialState, action: Action) => {
       return {
         ...state,
         navSticky: false,
+      }
+
+    case 'OPEN_MODAL':
+      return {
+        ...state,
+        showModal: true,
+      }
+
+    case 'CLOSE_MODAL':
+      return {
+        ...state,
+        showModal: false,
       }
 
     default:

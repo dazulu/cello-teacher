@@ -12,8 +12,10 @@ import Lessons from 'components/lessons'
 import Faq from 'components/faq'
 import Contact from 'components/contact'
 import Map from 'components/map'
+import DatenschutzModal from 'components/datenschutz'
 
 const Home = () => {
+  const showModal = useSelector<ApplicationState>(({ showModal }) => showModal)
   const navIsSticky = useSelector<ApplicationState>(
     ({ navSticky }) => navSticky
   )
@@ -35,6 +37,7 @@ const Home = () => {
           <Contact />
           <Map />
           <Footer />
+          {showModal && <DatenschutzModal />}
         </main>
       ) : (
         <div
