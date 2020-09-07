@@ -1,3 +1,8 @@
 [build]
   command = "npm run build && npm run export"
   publish = "out"
+[[headers]]
+  for = "*.avif"
+  [headers.values]
+    Content-Type = "image/avif"
+    Content-Disposition = "inline"
