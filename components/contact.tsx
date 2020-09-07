@@ -164,10 +164,6 @@ const contact = () => {
           margin-bottom: 60px;
         }
 
-        address {
-          font-style: normal;
-        }
-
         .contact-details {
           p:not(:last-child) {
             margin-bottom: 10px;
