@@ -16,6 +16,26 @@ class MyDocument extends Document {
     return (
       <Html lang="de">
         <Head>
+          <meta
+            name="description"
+            content="Cello lernen muss nicht schwer sein. Lernen Sie Cello im Einzelunterricht oder in Gruppen ab 5 Jahren. Perfekt für Einwohner in der Nähe von Heckenbeck, Bad Gandersheim, Kreiensen und Einbeck."
+          />
+          <meta
+            property="og:title"
+            content="Cellolehrer Christoph Siska | Cello Unterricht in der Nähe von Bad Gandersheim, Einbeck, Heckenbeck, Kreiensen
+            "
+          />
+          <meta
+            property="og:image"
+            content="https://www.cellospielart.de/images/og-image.jpg"
+          />
+          <meta
+            property="og:description"
+            content="Cello lernen muss nicht schwer sein. Lernen Sie Cello im Einzelunterricht oder in Gruppen ab 5 Jahren. Perfekt für Einwohner in der Nähe von Heckenbeck, Bad Gandersheim, Kreiensen und Einbeck."
+          />
+          <meta property="og:url" content="https://www.cellospielart.de" />
+          <meta property="og:type" content="website" />
+
           <link rel="icon" href="/favicon.png" />
 
           <link
@@ -35,12 +55,6 @@ class MyDocument extends Document {
             as="style"
             href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap"
           />
-
-          <meta property="og:title" content="foo" />
-          <meta property="og:image" content="foo" />
-          <meta property="og:description" content="foo" />
-          <meta property="og:url" content="foo" />
-          <meta property="og:type" content="website" />
 
           {/* todo remove on launch */}
           <meta key="robots" name="robots" content="noindex,follow" />

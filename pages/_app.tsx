@@ -14,7 +14,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <Provider store={store}>
         <Head>
-          <title>Christoph Siska</title>
+          <title>
+            Cello Unterricht in Bad Gandersheim, Einbeck, Heckenbeck |
+            Cellolehrer Christoph Siska
+          </title>
         </Head>
         <Component {...pageProps} />
       </Provider>
