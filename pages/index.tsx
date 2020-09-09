@@ -22,36 +22,22 @@ const Home = () => {
 
   return (
     <>
-      {process.env.NODE_ENV === 'development' ? (
-        <main>
-          <div className={`background ${navIsSticky ? 'nav-spacer' : ''}`}>
-            <Header />
-            <Hero />
-          </div>
-          <About />
-          <Parallax background="bg4" />
-          <Lessons />
-          <Parallax background="bg2" />
-          <Faq />
-          <Parallax background="bg3" />
-          <Contact />
-          <Map />
-          <Footer />
-          {showModal && <DatenschutzModal />}
-        </main>
-      ) : (
-        <div
-          style={{
-            background: '#111',
-            height: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Logo />
+      <main>
+        <div className={`background ${navIsSticky ? 'nav-spacer' : ''}`}>
+          <Header />
+          <Hero />
         </div>
-      )}
+        <About />
+        <Parallax background="bg4" />
+        <Lessons />
+        <Parallax background="bg2" />
+        <Faq />
+        <Parallax background="bg3" />
+        <Contact />
+        <Map />
+        <Footer />
+        {showModal && <DatenschutzModal />}
+      </main>
       <style jsx global>{`
         .nav-spacer {
           padding-top: 80px;
