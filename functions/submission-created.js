@@ -1,20 +1,17 @@
 const NetlifyAPI = require('netlify')
 
-const SITE_ID = process.env.SITE_ID // default Netlify env var
-const ACCESS_TOKEN = process.env.NETLIFY_API_ACCESS_TOKEN // custom Netlify env var
-
-const client = new NetlifyAPI(ACCESS_TOKEN)
-
 exports.handler = function (event, context, callback) {
   /*
    * Get an [] of submissions from all forms under SITE_ID
    * Loop through and delete each submission
    */
 
+  const client = new NetlifyAPI(process.env.NETLIFY_API_ACCESS_TOKEN)
+
   const getSubmissions = () => {
     return client
       .listSiteSubmissions({
-        site_id: SITE_ID,
+        site_id: process.env.SITE_ID,
       })
       .catch((e) => console.log(e))
   }
