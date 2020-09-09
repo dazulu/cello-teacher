@@ -1,6 +1,7 @@
 [build]
   command = "npm run build && npm run export"
   publish = "out"
+  functions = "functions/"
 [[headers]]
   for = "*.avif"
   [headers.values]
