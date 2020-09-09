@@ -5,23 +5,42 @@ const ACCESS_TOKEN = process.env.NETLIFY_API_ACCESS_TOKEN // custom Netlify env 
 
 const client = new NetlifyAPI(ACCESS_TOKEN)
 
-exports.handler = function (event, context) {
+exports.handler = function (event, context, callback) {
   /*
    * Get an [] of submissions from all forms under SITE_ID
    * Loop through and delete each submission
    */
-  client
-    .listSiteSubmissions({
-      site_id: SITE_ID,
-    })
-    .then((submissions) => {
-      if (submissions) {
-        submissions.forEach((submission) => {
-          client.deleteSubmission({ submission_id: submission.id })
-        })
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+
+  const getSubmissions = () => {
+    return client
+      .listSiteSubmissions({
+        site_id: SITE_ID,
+      })
+      .catch((e) => console.log(e))
+  }
+
+  const deleteSubmission = (submission_id) => {
+    client
+      .deleteSubmission({ submission_id: submission_id })
+      .catch((e) => console.log(e))
+  }
+
+  ;(async () => {
+    const submissions = await getSubmissions()
+
+    if (submissions.length) {
+      submissions.forEach((submission) => {
+        deleteSubmission(submission.id)
+      })
+      callback(null, {
+        statusCode: 200,
+        body: 'Ok',
+      })
+    } else {
+      callback(null, {
+        statusCode: 200,
+        body: 'Nothing to delete',
+      })
+    }
+  })()
 }
