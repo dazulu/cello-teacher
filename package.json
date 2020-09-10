@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "postinstall": "netlify-lambda install",
+    "postinstall": "netlify-lambda install lambda-src",
     "start:lambda": "netlify-lambda serve lambda-src",
     "build:lambda": "netlify-lambda build lambda-src",
     "build": "next build",
