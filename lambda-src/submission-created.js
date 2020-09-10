@@ -31,12 +31,14 @@ exports.handler = function (event, context, callback) {
       })
       callback(null, {
         statusCode: 200,
-        body: 'Ok',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ msg: 'Submissions deleted' }),
       })
     } else {
       callback(null, {
         statusCode: 200,
-        body: 'Nothing to delete',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ msg: 'No submissions to delete' }),
       })
     }
   })()
