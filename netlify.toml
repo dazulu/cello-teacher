@@ -1,7 +1,7 @@
 [build]
-  command = "npm run build && npm run export"
+  command = "npm run build:lambda && npm run build && npm run export"
   publish = "out"
-  functions = "./functions"
+  functions = "lambda"
 [[headers]]
   for = "*.avif"
   [headers.values]
