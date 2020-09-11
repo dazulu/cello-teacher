@@ -7,6 +7,7 @@
   [headers.values]
     Content-Type = "image/avif"
     Content-Disposition = "inline"
-  for = "/"
+[[headers]]
+  for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = *
