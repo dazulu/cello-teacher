@@ -7,3 +7,4 @@
   [headers.values]
     Content-Type = "image/avif"
     Content-Disposition = "inline"
+    Access-Control-Allow-Origin = *
