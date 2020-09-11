@@ -1,6 +1,6 @@
 const NetlifyAPI = require('netlify')
 
-exports.handler = async function (event, context, callback) {
+exports.handler = async function () {
   /*
    * Get an [] of submissions from all forms under SITE_ID
    * Loop through and delete each submission
@@ -20,14 +20,14 @@ exports.handler = async function (event, context, callback) {
         .deleteSubmission({ submission_id: submission.id })
         .catch((e) => console.log(e))
     })
-    callback(null, {
+    return {
       statusCode: 200,
       body: 'Submissions deleted',
-    })
+    }
   } else {
-    callback(null, {
+    return {
       statusCode: 200,
       body: 'No submissions to delete',
-    })
+    }
   }
 }
