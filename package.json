@@ -7,6 +7,7 @@
     "build": "next build && yarn lambda:build",
     "start": "next start",
     "export": "next export",
+    "postinstall": "netlify-lambda install ./lambda-src",
     "lambda:build": "netlify-lambda build ./lambda-src",
     "lambda:serve": "netlify-lambda serve ./lambda"
   },

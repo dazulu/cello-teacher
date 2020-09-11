@@ -1,5 +1,5 @@
 [build]
-  command = "yarn lambda:build && yarn build && yarn export"
+  command = "yarn build && yarn export"
   publish = "out"
   functions = "lambda"
 [[headers]]
