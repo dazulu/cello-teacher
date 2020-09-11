@@ -1,3 +1,5 @@
+'use strict'
+
 const NetlifyAPI = require('netlify')
 
 exports.handler = async function () {
