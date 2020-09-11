@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "postinstall": "netlify-lambda install lambda-src",
-    "build:lambda": "netlify-lambda build lambda-src",
     "build": "next build",
     "start": "next start",
     "export": "next export"
