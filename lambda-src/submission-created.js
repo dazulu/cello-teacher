@@ -15,8 +15,8 @@ exports.handler = async function () {
     .catch((e) => console.log(e))
 
   if (submissions.length) {
-    submissions.forEach((submission) => {
-      client
+    submissions.forEach(async (submission) => {
+      await client
         .deleteSubmission({ submission_id: submission.id })
         .catch((e) => console.log(e))
     })
