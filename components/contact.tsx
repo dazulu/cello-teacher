@@ -1,6 +1,18 @@
-import { useEffect } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
+import { useFormFields } from 'lib/formHooks'
+
+import ContactInfo from 'components/contactInfo'
 
 const contact = () => {
+  const [dirty, setDirty] = useState<boolean>(false)
+  const [fields, handleFieldChange] = useFormFields({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    agreed: false,
+  })
+
   const toggleFieldClass = (target: HTMLTextAreaElement | HTMLInputElement) => {
     if (target.value.length > 0) {
       target.classList.add('has--text')
@@ -48,6 +60,43 @@ const contact = () => {
     initLabelHandling()
   })
 
+  const validateForm = () => {
+    return (
+      fields.email.length > 0 &&
+      fields.name.length > 0 &&
+      fields.message.length > 0 &&
+      fields.agreed
+    )
+  }
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    setDirty(true)
+    if (!validateForm()) {
+      return
+    } else {
+      const data: Record<string, any> = { 'form-name': 'contact', ...fields }
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: Object.keys(data)
+          .map(
+            (key) =>
+              encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+          )
+          .join('&'),
+      })
+        .then(() => alert('Success!'))
+        .catch((error) => alert(error))
+    }
+  }
+
+  const nameError = !fields.name && dirty
+  const emailError = !fields.name && dirty
+  const messageError = !fields.name && dirty
+  const agreeError = !fields.name && dirty
+
   return (
     <>
       <div id="contact" className="padding__wrapper">
@@ -55,101 +104,116 @@ const contact = () => {
           <h2 className="title">Kontakt</h2>
 
           <div className="section">
-            <div className="text">
-              <section>
-                <address className="contact-details">
-                  <p>
-                    <strong>Christoph Siska</strong> | Cellist &amp;
-                    Intrumentallehrer
-                  </p>
-                  <p>
-                    <strong>Telefon: </strong>
-                    <a href="tel:+4916092723100" rel="noopener noreferrer">
-                      0160 92723100
-                    </a>
-                  </p>
-                  <p>
-                    <strong>Email: </strong>
-                    <a href="mailto:jim@rock.com" rel="noopener noreferrer">
-                      Christoph-Siska@web.de
-                    </a>
-                  </p>
-                </address>
-              </section>
-              <section>
-                <h3>Unterrichtsorte</h3>
-                <address>
-                  <p>
-                    Hilprechtshausen 7
-                    <br />
-                    37581 Bad Gandersheim
-                    <br />
-                    <span className="direction">
-                      (6 km nordwestlich von Bad Gandersheim)
-                    </span>
-                  </p>
-                </address>
-                <address>
-                  <p>
-                    <a
-                      href="http://www.musikschule-musikuss-braunschweig.de/"
-                      rel="noopener"
-                    >
-                      Musikschule Musikuß
-                    </a>
-                    <br />
-                    Karlstraße 35
-                    <br /> 38106 Braunschweig
-                  </p>
-                </address>
-              </section>
-            </div>
+            <ContactInfo />
 
             <section className="form">
               <h3>Formular</h3>
-              <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="blackhole"
-              >
-                <p>
-                  <input type="hidden" name="form-name" value="contact" />
-                </p>
-                <div className="obfuscate">
-                  <label>
-                    If you want no reply:
-                    <input name="blackhole" tabIndex={-1} autoComplete="off" />
-                  </label>
-                </div>
+              <form onSubmit={handleSubmit} data-netlify-honeypot="blackhole">
+                <input type="hidden" name="form-name" value="contact" />
+                <fieldset>
+                  <div className="obfuscatea">
+                    <label>
+                      If you want no reply type in here:
+                      <input
+                        name="blackhole"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </label>
+                  </div>
 
-                <div>
-                  <input name="name" type="text" required />
-                  <label htmlFor="name">Name*</label>
-                </div>
-                <div>
-                  <input name="email" type="email" required />
-                  <label htmlFor="email">E-Mail*</label>
-                </div>
-                <div>
-                  <input name="phone" type="tel" />
-                  <label htmlFor="phone">Telefon</label>
-                </div>
-                <div>
-                  <textarea name="message" required></textarea>
-                  <label htmlFor="message">Nachricht*</label>
-                </div>
+                  <div className="animate-label">
+                    <input
+                      name="name"
+                      type="text"
+                      value={fields.name}
+                      onChange={handleFieldChange}
+                      className={nameError ? 'field-error' : ''}
+                    />
+                    <label htmlFor="name">Name (Pflichtfeld)</label>
+                    {!fields.name && dirty && (
+                      <p className="error-message" role="alert">
+                        Bitte schreiben Sie noch Ihren Namen.
+                      </p>
+                    )}
+                  </div>
+                  <div className="animate-label">
+                    <input
+                      name="email"
+                      type="email"
+                      value={fields.email}
+                      onChange={handleFieldChange}
+                      className={emailError ? 'field-error' : ''}
+                    />
+                    <label htmlFor="email">E-Mail Adresse (Pflichtfeld)</label>
+                    {!fields.email && dirty && (
+                      <p className="error-message" role="alert">
+                        Bitte schreiben Sie noch Ihre E-Mail Adresse.
+                      </p>
+                    )}
+                  </div>
+                  <div className="animate-label">
+                    <input name="phone" type="tel" value={fields.phone} />
+                    <label htmlFor="phone">Telefon</label>
+                  </div>
+                  <div className="animate-label">
+                    <textarea
+                      name="message"
+                      onChange={handleFieldChange}
+                      className={!fields.message && dirty ? 'field-error' : ''}
+                    ></textarea>
+                    <label htmlFor="message">Nachricht (Pflichtfeld)</label>
+                    {!fields.message && dirty && (
+                      <p className="error-message" role="alert">
+                        Bitte schreiben Sie noch Ihre Nachricht.
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="">
+                    <label className="checkbox-label">
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="agreed"
+                        checked={fields.agreed}
+                        onChange={handleFieldChange}
+                      />
+                      <span
+                        className={`checkbox-simulated ${
+                          agreeError ? 'field-error' : ''
+                        }`}
+                      />
+                      <span className="checkbox-text">
+                        Ich stimme dem <a href="#">Datenschutz</a> zu
+                        (Pflichtfeld)
+                      </span>
+                    </label>
+                    {!fields.agreed && dirty && (
+                      <p
+                        className="error-message error-message--checkbox"
+                        role="alert"
+                      >
+                        Bitte stimmen Sie dem Datenschutz zu
+                      </p>
+                    )}
+                  </div>
+                </fieldset>
                 <button className="button" type="submit">
                   Senden
                 </button>
               </form>
-              <p className="pflichtfeld">
-                <strong>*</strong> Pflichtfeld
-              </p>
             </section>
           </div>
         </div>
       </div>
+      <style jsx global>
+        {`
+          .field-error {
+            outline-color: red !important;
+          }
+        `}
+      </style>
       <style jsx>{`
         .title {
           text-align: center;
@@ -160,48 +224,111 @@ const contact = () => {
           display: none !important;
         }
 
-        .text {
-          margin-bottom: 60px;
-        }
-
-        .contact-details {
-          p:not(:last-child) {
-            margin-bottom: 10px;
-          }
-        }
-
-        .direction {
-          display: block;
-          font-size: 1rem;
-        }
-
         form {
           max-width: 500px;
           position: relative;
           width: 100%;
+        }
+
+        fieldset {
+          border: 0;
+          margin: 0;
+          padding: 0;
 
           > div {
             position: relative;
           }
         }
 
-        label {
-          color: #fff;
-          transition: all 150ms ease-out;
-          pointer-events: none;
+        .animate-label {
+          label {
+            color: #fff;
+            transition: all 150ms ease-out;
+            pointer-events: none;
+            position: absolute;
+            left: 10px;
+            top: 0;
+            transform: translateY(19px);
+            font-size: 1rem;
+          }
+
+          input {
+            height: 60px;
+          }
+
+          textarea {
+            height: 150px;
+          }
+
+          input,
+          textarea {
+            background: #393939;
+            border: none;
+            outline: 3px solid transparent;
+            color: #fff;
+            margin-bottom: 20px;
+            padding: 27px 15px 10px 15px;
+            display: block;
+            width: 100%;
+            font-size: 1.1rem;
+          }
+        }
+
+        .checkbox-label {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          height: 50px;
+          font-size: 1.1rem;
+          width: 100%;
+        }
+
+        .checkbox-text {
+          user-select: none;
+        }
+
+        .checkbox {
+          visibility: hidden;
           position: absolute;
-          left: 10px;
-          top: 0;
-          transform: translateY(19px);
-          font-size: 1rem;
+
+          &:invalid {
+            + .checkbox-simulated {
+              border: 1px solid firebrick;
+            }
+          }
+
+          &:checked + .checkbox-simulated {
+            position: relative;
+
+            &:after {
+              background-color: #393939;
+              content: '';
+              position: absolute;
+              top: 2px;
+              left: 2px;
+              height: 24px;
+              width: 24px;
+            }
+          }
         }
 
-        input {
-          height: 60px;
+        .checkbox-simulated {
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000;
+          margin-right: 10px;
         }
 
-        textarea {
-          height: 150px;
+        .error-message {
+          color: firebrick;
+          font-size: 0.9rem;
+          margin-bottom: 0;
+          position: relative;
+          top: -18px;
+        }
+
+        .error-message--checkbox {
+          top: -10px;
         }
 
         .button {
@@ -212,27 +339,11 @@ const contact = () => {
           background: #386b80;
           background-size: 27px;
           padding: 15px;
+          width: 100%;
 
           &:hover {
             background-color: darken(#386b80, 5%);
           }
-        }
-
-        input,
-        textarea {
-          background: #393939;
-          border: none;
-          color: #fff;
-          margin-bottom: 20px;
-          padding: 27px 15px 10px 15px;
-        }
-
-        input,
-        textarea,
-        button {
-          display: block;
-          font-size: 1.1rem;
-          width: 100%;
         }
 
         .has--text,
@@ -255,12 +366,6 @@ const contact = () => {
         @media only screen and (min-width: 800px) {
           .section {
             display: flex;
-          }
-
-          .text {
-            width: 50%;
-            margin-right: 10%;
-            margin-bottom: 0;
           }
 
           .form {
