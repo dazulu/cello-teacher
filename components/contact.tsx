@@ -170,7 +170,7 @@ const contact = () => {
                     )}
                   </div>
 
-                  <div className="">
+                  <div>
                     <label className="checkbox-label">
                       <input
                         className="checkbox"
@@ -317,6 +317,10 @@ const contact = () => {
           height: 30px;
           border: 1px solid #000;
           margin-right: 10px;
+        }
+
+        .checkbox-simulated.field-error {
+          border: 3px solid red;
         }
 
         .error-message {
