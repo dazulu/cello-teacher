@@ -300,10 +300,9 @@ const datenschutz = () => {
           background-color: #ffffff;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;
-
           box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
           height: auto;
-          max-width: 40rem;
+          max-width: 60rem;
           max-height: calc(100% - 1em);
         }
 
