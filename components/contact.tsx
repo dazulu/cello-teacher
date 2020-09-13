@@ -1,14 +1,20 @@
 import { FormEvent, useEffect, useState } from 'react'
-import { useFormFields } from 'lib/formHooks'
+import { useDispatch } from 'react-redux'
+import { Action } from 'store'
 
+import { useFormFields } from 'lib/formHooks'
 import ContactInfo from 'components/contactInfo'
 
 type SubmitStatus = 'SUCCESS' | 'ERROR' | 'FRESH'
 
 const contact = () => {
+  const dispatch = useDispatch()
+  const showModal = () => dispatch<Action>({ type: 'OPEN_MODAL' })
+
   const [dirty, setDirty] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('FRESH')
+
   const [fields, handleFieldChange] = useFormFields({
     name: '',
     email: '',
@@ -107,6 +113,11 @@ const contact = () => {
     }
   }
 
+  const handlePrivacyLink = (e: any) => {
+    e.preventDefault()
+    showModal()
+  }
+
   const nameError = !fields.name && dirty
   const emailError = !fields.email && dirty
   const messageError = !fields.message && dirty
@@ -128,7 +139,7 @@ const contact = () => {
                 <form onSubmit={handleSubmit} data-netlify-honeypot="blackhole">
                   <input type="hidden" name="form-name" value="contact" />
                   <fieldset>
-                    <div className="obfuscatea">
+                    <div className="obfuscate">
                       <label>
                         If you want no reply type in here:
                         <input
@@ -173,7 +184,7 @@ const contact = () => {
                     </div>
                     <div className="animate-label">
                       <input name="phone" type="tel" value={fields.phone} />
-                      <label htmlFor="phone">Telefon</label>
+                      <label htmlFor="phone">Telefonnummer</label>
                     </div>
                     <div className="animate-label">
                       <textarea
@@ -204,8 +215,14 @@ const contact = () => {
                           }`}
                         />
                         <span className="checkbox-text">
-                          Ich stimme dem <a href="#">Datenschutz</a> zu
-                          (Pflichtfeld)
+                          Ich stimme dem{' '}
+                          <button
+                            className="privacy-link"
+                            onClick={handlePrivacyLink}
+                          >
+                            Datenschutz
+                          </button>{' '}
+                          zu (Pflichtfeld)
                         </span>
                       </label>
                       {agreeError && (
@@ -217,10 +234,10 @@ const contact = () => {
                         </p>
                       )}
                     </div>
+                    <button className="button" type="submit" disabled={loading}>
+                      Senden
+                    </button>
                   </fieldset>
-                  <button className="button" type="submit" disabled={loading}>
-                    Senden
-                  </button>
                 </form>
               )}
               {submitStatus === 'SUCCESS' && (
@@ -413,6 +430,20 @@ const contact = () => {
           font-size: 1.1rem;
           line-height: 1.7rem;
           margin-top: 20px;
+        }
+
+        .privacy-link {
+          display: inline;
+          color: #2d6db0;
+          background: none;
+          padding: 0;
+          border: none;
+          text-decoration: underline;
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: none;
+          }
         }
 
         @media only screen and (min-width: 800px) {
