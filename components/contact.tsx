@@ -3,8 +3,12 @@ import { useFormFields } from 'lib/formHooks'
 
 import ContactInfo from 'components/contactInfo'
 
+type SubmitStatus = 'SUCCESS' | 'ERROR' | 'FRESH'
+
 const contact = () => {
   const [dirty, setDirty] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('FRESH')
   const [fields, handleFieldChange] = useFormFields({
     name: '',
     email: '',
@@ -71,8 +75,13 @@ const contact = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
+    if (loading) return
+
+    setLoading(true)
     setDirty(true)
+
     if (!validateForm()) {
+      setLoading(false)
       return
     } else {
       const data: Record<string, any> = { 'form-name': 'contact', ...fields }
@@ -87,8 +96,14 @@ const contact = () => {
           )
           .join('&'),
       })
-        .then(() => alert('Success!'))
-        .catch((error) => alert(error))
+        .then(() => {
+          setSubmitStatus('SUCCESS')
+          setLoading(false)
+        })
+        .catch(() => {
+          setLoading(false)
+          setSubmitStatus('ERROR')
+        })
     }
   }
 
@@ -108,101 +123,118 @@ const contact = () => {
 
             <section className="form">
               <h3>Formular</h3>
-              <form onSubmit={handleSubmit} data-netlify-honeypot="blackhole">
-                <input type="hidden" name="form-name" value="contact" />
-                <fieldset>
-                  <div className="obfuscatea">
-                    <label>
-                      If you want no reply type in here:
-                      <input
-                        name="blackhole"
-                        tabIndex={-1}
-                        autoComplete="off"
-                      />
-                    </label>
-                  </div>
 
-                  <div className="animate-label">
-                    <input
-                      name="name"
-                      type="text"
-                      value={fields.name}
-                      onChange={handleFieldChange}
-                      className={nameError ? 'field-error' : ''}
-                    />
-                    <label htmlFor="name">Name (Pflichtfeld)</label>
-                    {nameError && (
-                      <p className="error-message" role="alert">
-                        Bitte schreiben Sie noch Ihren Namen.
-                      </p>
-                    )}
-                  </div>
-                  <div className="animate-label">
-                    <input
-                      name="email"
-                      type="email"
-                      value={fields.email}
-                      onChange={handleFieldChange}
-                      className={emailError ? 'field-error' : ''}
-                    />
-                    <label htmlFor="email">E-Mail Adresse (Pflichtfeld)</label>
-                    {emailError && (
-                      <p className="error-message" role="alert">
-                        Bitte schreiben Sie noch Ihre E-Mail Adresse.
-                      </p>
-                    )}
-                  </div>
-                  <div className="animate-label">
-                    <input name="phone" type="tel" value={fields.phone} />
-                    <label htmlFor="phone">Telefon</label>
-                  </div>
-                  <div className="animate-label">
-                    <textarea
-                      name="message"
-                      onChange={handleFieldChange}
-                      className={messageError ? 'field-error' : ''}
-                    ></textarea>
-                    <label htmlFor="message">Nachricht (Pflichtfeld)</label>
-                    {messageError && (
-                      <p className="error-message" role="alert">
-                        Bitte schreiben Sie noch Ihre Nachricht.
-                      </p>
-                    )}
-                  </div>
+              {(submitStatus === 'FRESH' || submitStatus === 'ERROR') && (
+                <form onSubmit={handleSubmit} data-netlify-honeypot="blackhole">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <fieldset>
+                    <div className="obfuscatea">
+                      <label>
+                        If you want no reply type in here:
+                        <input
+                          name="blackhole"
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                      </label>
+                    </div>
 
-                  <div>
-                    <label className="checkbox-label">
+                    <div className="animate-label">
                       <input
-                        className="checkbox"
-                        type="checkbox"
-                        name="agreed"
-                        checked={fields.agreed}
+                        name="name"
+                        type="text"
+                        value={fields.name}
                         onChange={handleFieldChange}
+                        className={nameError ? 'field-error' : ''}
                       />
-                      <span
-                        className={`checkbox-simulated ${
-                          agreeError ? 'field-error' : ''
-                        }`}
+                      <label htmlFor="name">Name (Pflichtfeld)</label>
+                      {nameError && (
+                        <p className="error-message" role="alert">
+                          Bitte schreiben Sie noch Ihren Namen.
+                        </p>
+                      )}
+                    </div>
+                    <div className="animate-label">
+                      <input
+                        name="email"
+                        type="email"
+                        value={fields.email}
+                        onChange={handleFieldChange}
+                        className={emailError ? 'field-error' : ''}
                       />
-                      <span className="checkbox-text">
-                        Ich stimme dem <a href="#">Datenschutz</a> zu
-                        (Pflichtfeld)
-                      </span>
-                    </label>
-                    {agreeError && (
-                      <p
-                        className="error-message error-message--checkbox"
-                        role="alert"
-                      >
-                        Bitte stimmen Sie dem Datenschutz zu
-                      </p>
-                    )}
-                  </div>
-                </fieldset>
-                <button className="button" type="submit">
-                  Senden
-                </button>
-              </form>
+                      <label htmlFor="email">
+                        E-Mail Adresse (Pflichtfeld)
+                      </label>
+                      {emailError && (
+                        <p className="error-message" role="alert">
+                          Bitte schreiben Sie noch Ihre E-Mail Adresse.
+                        </p>
+                      )}
+                    </div>
+                    <div className="animate-label">
+                      <input name="phone" type="tel" value={fields.phone} />
+                      <label htmlFor="phone">Telefon</label>
+                    </div>
+                    <div className="animate-label">
+                      <textarea
+                        name="message"
+                        onChange={handleFieldChange}
+                        className={messageError ? 'field-error' : ''}
+                      ></textarea>
+                      <label htmlFor="message">Nachricht (Pflichtfeld)</label>
+                      {messageError && (
+                        <p className="error-message" role="alert">
+                          Bitte schreiben Sie noch Ihre Nachricht.
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="checkbox-label">
+                        <input
+                          className="checkbox"
+                          type="checkbox"
+                          name="agreed"
+                          checked={fields.agreed}
+                          onChange={handleFieldChange}
+                        />
+                        <span
+                          className={`checkbox-simulated ${
+                            agreeError ? 'field-error' : ''
+                          }`}
+                        />
+                        <span className="checkbox-text">
+                          Ich stimme dem <a href="#">Datenschutz</a> zu
+                          (Pflichtfeld)
+                        </span>
+                      </label>
+                      {agreeError && (
+                        <p
+                          className="error-message error-message--checkbox"
+                          role="alert"
+                        >
+                          Bitte stimmen Sie dem Datenschutz zu
+                        </p>
+                      )}
+                    </div>
+                  </fieldset>
+                  <button className="button" type="submit" disabled={loading}>
+                    Senden
+                  </button>
+                </form>
+              )}
+              {submitStatus === 'SUCCESS' && (
+                <p className="submitted submitted--success" role="alert">
+                  Danke, Ihre Nachricht wurde erfolgreich versendet.
+                </p>
+              )}
+              {submitStatus === 'ERROR' && (
+                <p className="submitted submitted--error" role="alert">
+                  Leider ging etwas schief, Ihre Nachricht wurde nicht gesendet.
+                  Bitte versuchen Sie es erneut oder schicken Sie eine E-Mail
+                  direkt an Christoph-Siska@web.de
+                </p>
+              )}
             </section>
           </div>
         </div>
@@ -350,6 +382,11 @@ const contact = () => {
           }
         }
 
+        .button:disabled {
+          background: #c1c1c1;
+          cursor: not-allowed;
+        }
+
         .has--text,
         input:focus,
         textarea:focus {
@@ -362,9 +399,20 @@ const contact = () => {
           }
         }
 
-        .pflichtfeld {
-          font-size: 0.9em;
-          margin-top: 10px;
+        .submitted {
+          color: #fff;
+          padding: 20px;
+        }
+
+        .submitted--success {
+          background-color: #8dac35;
+        }
+
+        .submitted--error {
+          background-color: #ac3535;
+          font-size: 1.1rem;
+          line-height: 1.7rem;
+          margin-top: 20px;
         }
 
         @media only screen and (min-width: 800px) {
