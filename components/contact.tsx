@@ -93,9 +93,9 @@ const contact = () => {
   }
 
   const nameError = !fields.name && dirty
-  const emailError = !fields.name && dirty
-  const messageError = !fields.name && dirty
-  const agreeError = !fields.name && dirty
+  const emailError = !fields.email && dirty
+  const messageError = !fields.message && dirty
+  const agreeError = !fields.agreed && dirty
 
   return (
     <>
@@ -131,7 +131,7 @@ const contact = () => {
                       className={nameError ? 'field-error' : ''}
                     />
                     <label htmlFor="name">Name (Pflichtfeld)</label>
-                    {!fields.name && dirty && (
+                    {nameError && (
                       <p className="error-message" role="alert">
                         Bitte schreiben Sie noch Ihren Namen.
                       </p>
@@ -146,7 +146,7 @@ const contact = () => {
                       className={emailError ? 'field-error' : ''}
                     />
                     <label htmlFor="email">E-Mail Adresse (Pflichtfeld)</label>
-                    {!fields.email && dirty && (
+                    {emailError && (
                       <p className="error-message" role="alert">
                         Bitte schreiben Sie noch Ihre E-Mail Adresse.
                       </p>
@@ -160,10 +160,10 @@ const contact = () => {
                     <textarea
                       name="message"
                       onChange={handleFieldChange}
-                      className={!fields.message && dirty ? 'field-error' : ''}
+                      className={messageError ? 'field-error' : ''}
                     ></textarea>
                     <label htmlFor="message">Nachricht (Pflichtfeld)</label>
-                    {!fields.message && dirty && (
+                    {messageError && (
                       <p className="error-message" role="alert">
                         Bitte schreiben Sie noch Ihre Nachricht.
                       </p>
@@ -189,7 +189,7 @@ const contact = () => {
                         (Pflichtfeld)
                       </span>
                     </label>
-                    {!fields.agreed && dirty && (
+                    {agreeError && (
                       <p
                         className="error-message error-message--checkbox"
                         role="alert"
