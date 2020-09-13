@@ -21,7 +21,7 @@ exports.handler = async function (event, context) {
       body: 'Submissions deleted',
     }
   } else {
-    console.log('NOTHING TO DELETE')
+    console.log('No submissions to delete')
     return {
       statusCode: 200,
       body: 'No submissions to delete',

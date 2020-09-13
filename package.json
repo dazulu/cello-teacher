@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && yarn lambda:build",
+    "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lambda:build": "netlify-lambda build ./lambda-src",
-    "lambda:serve": "netlify-lambda serve ./lambda"
+    "postinstall": "netlify-lambda install"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.3",
