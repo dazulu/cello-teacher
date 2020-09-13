@@ -1,6 +1,7 @@
 [build]
-  command = "yarn build && yarn export"
+  command = "yarn lambda:build && yarn build && yarn export"
   publish = "out"
+  functions = "lambda"
 [[headers]]
   for = "*.avif"
   [headers.values]
