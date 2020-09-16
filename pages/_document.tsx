@@ -55,10 +55,6 @@ class MyDocument extends Document {
             as="style"
             href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap"
           />
-
-          {/* todo remove on launch */}
-          <meta key="robots" name="robots" content="noindex,follow" />
-          <meta key="googlebot" name="googlebot" content="noindex,follow" />
         </Head>
         <body>
           <Main />
