@@ -1,6 +1,4 @@
 import { FormEvent, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Action } from 'store'
 
 import { useFormFields } from 'lib/formHooks'
 import ContactInfo from 'components/contactInfo'
@@ -8,9 +6,6 @@ import ContactInfo from 'components/contactInfo'
 type SubmitStatus = 'SUCCESS' | 'ERROR' | 'FRESH'
 
 const contact = () => {
-  const dispatch = useDispatch()
-  const showModal = () => dispatch<Action>({ type: 'OPEN_MODAL' })
-
   const [dirty, setDirty] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('FRESH')
@@ -111,11 +106,6 @@ const contact = () => {
           setSubmitStatus('ERROR')
         })
     }
-  }
-
-  const handlePrivacyLink = (e: any) => {
-    e.preventDefault()
-    showModal()
   }
 
   const nameError = !fields.name && dirty
@@ -221,12 +211,13 @@ const contact = () => {
                         />
                         <span className="checkbox-text">
                           Ich stimme dem{' '}
-                          <button
+                          <a
+                            href="/datenschutz"
                             className="privacy-link"
-                            onClick={handlePrivacyLink}
+                            target="_blank"
                           >
                             Datenschutz
-                          </button>{' '}
+                          </a>{' '}
                           zu (Pflichtfeld)
                         </span>
                       </label>

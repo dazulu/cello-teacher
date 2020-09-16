@@ -7,15 +7,12 @@ import Hero from 'components/hero'
 import Footer from 'components/footer'
 import About from 'components/about'
 import Parallax from 'components/parallax'
-import Logo from 'components/logo'
 import Lessons from 'components/lessons'
 import Faq from 'components/faq'
 import Contact from 'components/contact'
 import Map from 'components/map'
-import DatenschutzModal from 'components/datenschutz'
 
 const Home = () => {
-  const showModal = useSelector<ApplicationState>(({ showModal }) => showModal)
   const navIsSticky = useSelector<ApplicationState>(
     ({ navSticky }) => navSticky
   )
@@ -36,7 +33,6 @@ const Home = () => {
         <Contact />
         <Map />
         <Footer />
-        {showModal && <DatenschutzModal />}
       </main>
       <style jsx global>{`
         .nav-spacer {

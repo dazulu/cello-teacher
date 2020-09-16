@@ -1,15 +1,14 @@
-import { useDispatch } from 'react-redux'
-import { Action } from 'store'
-
 const footer = () => {
-  const dispatch = useDispatch()
-  const showModal = () => dispatch<Action>({ type: 'OPEN_MODAL' })
-
   return (
     <>
       <footer className="content__wrapper footer">
-        <button onClick={showModal}>Datenschutz</button>-
-        <button onClick={showModal}>Impressum</button>
+        <a href="/datenschutz" target="_blank">
+          Datenschutz
+        </a>
+        -
+        <a href="/datenschutz" target="_blank">
+          Impressum
+        </a>
       </footer>
       <style jsx>{`
         .footer {
@@ -19,11 +18,9 @@ const footer = () => {
           justify-content: center;
           align-items: center;
 
-          button {
-            background: none;
-            border: none;
-            text-decoration: underline;
-            cursor: pointer;
+          a {
+            color: #333;
+            padding: 0 10px;
 
             &:hover {
               text-decoration: none;
