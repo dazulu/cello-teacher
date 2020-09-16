@@ -183,7 +183,12 @@ const contact = () => {
                       )}
                     </div>
                     <div className="animate-label">
-                      <input name="phone" type="tel" value={fields.phone} />
+                      <input
+                        name="phone"
+                        type="tel"
+                        value={fields.phone}
+                        onChange={handleFieldChange}
+                      />
                       <label htmlFor="phone">Telefonnummer</label>
                     </div>
                     <div className="animate-label">
