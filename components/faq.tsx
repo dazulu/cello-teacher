@@ -1,32 +1,45 @@
 interface Question {
   question: string
-  answer: string
+  answer: string[]
 }
 
 const questions: Question[] = [
   {
-    question: 'What gear do you use to record audio?',
-    answer: 'xxxx',
+    question: 'Gibt es Probestunden?',
+    answer: [
+      'Die erste Schnupperstunde ist kostenfrei. Dann gibt es drei Probestunden, die normal bezahlt werden. In dieser Probezeit kann man wöchentlich kündigen.',
+    ],
   },
   {
-    question: 'What gear do you use to record video?',
-    answer: 'xxx',
+    question: 'In welchem Alter kann man Cello spielen lernen?',
+    answer: [
+      'Ich arbeite mit Kindern ab 5 Jahre. Nach oben hin sind keine Grenzen gesetzt.',
+    ],
   },
   {
-    question: 'What software do you use to create videos?',
-    answer: 'xxx',
+    question: 'Muss ich ein eigenes Cello mitbringen?',
+    answer: [
+      'Das ist nicht notwendig. Ich habe einige Celli bereit stehen, die ich für 20,- € monatlich verleihe. Es gibt auch Extragrößen für Kinder.',
+    ],
   },
   {
-    question: 'What software do you use to edit audio?',
-    answer: 'xxx',
+    question: 'Wo und wann kann der Unterricht stattfinden?',
+    answer: [
+      'Ich unterrichte von Dienstag bis Donnerstag in Braunschweig und am Freitag in Hilprechtshausen bei Bad Gandersheim. Einen Termin können wir jederzeit vereinbaren.',
+    ],
   },
   {
-    question: 'Where are you from?',
-    answer: 'xxx',
+    question: 'Kann ich mit anderen zusammen in einer Gruppe spielen?',
+    answer: [
+      'Ob in der 2er-Gruppe oder im Einzelunterricht- das häufige Zusammenspiel mit dem anderen Schüler oder mit dem Lehrer gehört zu meinem Unterrichtskonzept.',
+      'Dann gibt es einmal im Jahr die Projektphase, in der der Einzelunterricht vorübergehend durch Ensemblespiel ersetzt wird.',
+    ],
   },
   {
-    question: 'Where did you get your website?',
-    answer: 'xxx',
+    question: 'Macht es was, wenn ich keine Noten lesen kann?',
+    answer: [
+      'Nein, Noten lesen ist nur eine von vielen Fähigeiten, die man zum Cello spielen braucht, und man kann es gut schrittweise lernen. Zeitweise ist es sogar besser, das Noten lesen hinten anzustellen, weil man sich so intensiver um einen schönen Celloton und um eine flüssige Spielweise bemühen kann.',
+    ],
   },
 ]
 
@@ -40,7 +53,9 @@ const faq = () => {
             {questions.map((q: Question, i) => (
               <div key={i}>
                 <h3>{q.question}</h3>
-                <p>{q.answer}</p>
+                {q.answer.map((a, j) => (
+                  <p key={j}>{a}</p>
+                ))}
               </div>
             ))}
           </div>
