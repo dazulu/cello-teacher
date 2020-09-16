@@ -142,11 +142,15 @@ const map = () => {
         }
 
         .buttons {
+          display: flex;
           position: absolute;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
           bottom: 25px;
-          transform: translateX(50vw);
-          margin-left: -190px;
           z-index: 1;
+          width: 100vw;
+          overflow: hidden;
         }
 
         .button {
@@ -158,7 +162,7 @@ const map = () => {
           font-size: 1rem;
 
           &:first-child {
-            margin-right: 10px;
+            margin-bottom: 10px;
           }
 
           &.selected {
@@ -175,6 +179,23 @@ const map = () => {
         .mapbox {
           width: 100%;
           height: 100%;
+        }
+
+        @media only screen and (min-width: 400px) {
+          .buttons {
+            display: block;
+            bottom: 25px;
+            transform: translateX(50vw);
+            margin-left: -190px;
+            width: auto;
+          }
+
+          .button {
+            &:first-child {
+              margin-right: 10px;
+              margin-bottom: 0;
+            }
+          }
         }
       `}</style>
     </>
