@@ -387,6 +387,7 @@ const contact = () => {
           border: 0;
           background: #386b80;
           background-size: 27px;
+          margin-top: 20px;
           padding: 15px;
           width: 100%;
 
