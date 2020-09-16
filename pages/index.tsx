@@ -35,8 +35,10 @@ const Home = () => {
         <Footer />
       </main>
       <style jsx global>{`
-        .nav-spacer {
-          padding-top: 80px;
+        @media only screen and (min-width: 1024px) {
+          .nav-spacer {
+            padding-top: 80px;
+          }
         }
       `}</style>
       <style jsx>
