@@ -15,7 +15,7 @@ const contactInfo = () => {
             </p>
             <p>
               <strong>Email: </strong>
-              <a href="mailto:jim@rock.com" rel="noopener noreferrer">
+              <a href="mailto:Christoph-Siska@web.de" rel="noopener noreferrer">
                 Christoph-Siska@web.de
               </a>
             </p>
@@ -38,7 +38,8 @@ const contactInfo = () => {
             <p>
               <a
                 href="http://www.musikschule-musikuss-braunschweig.de/"
-                rel="noopener"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 Musikschule Musikuß
               </a>
