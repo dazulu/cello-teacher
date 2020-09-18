@@ -98,6 +98,9 @@ const contact = () => {
           .join('&'),
       })
         .then(() => {
+          if (window && window.fathom) {
+            window.fathom.trackGoal('EDNSSZYL', 0)
+          }
           setSubmitStatus('SUCCESS')
           setLoading(false)
         })
