@@ -36,6 +36,25 @@ class MyDocument extends Document {
           <meta property="og:url" content="https://www.cellospielart.de" />
           <meta property="og:type" content="website" />
 
+          <meta name="twitter:card" content="summary_large_image" />
+
+          <meta
+            name="twitter:description"
+            content="Cello lernen muss nicht schwer sein. Lernen Sie Cello im Einzelunterricht oder in Gruppen ab 5 Jahren."
+          />
+
+          <meta
+            name="twitter:title"
+            content="Cellolehrer Christoph Siska | Cello Unterricht"
+          />
+
+          <meta
+            name="twitter:image"
+            content="https://www.cellospielart.de/images/og-image.jpg"
+          />
+
+          <meta name="twitter:alt" content="Cellolehrer Christoph Siska" />
+
           <link rel="icon" href="/favicon.png" />
 
           <link
