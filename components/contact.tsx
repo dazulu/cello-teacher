@@ -133,9 +133,10 @@ const contact = () => {
                   <input type="hidden" name="form-name" value="contact" />
                   <fieldset>
                     <div className="obfuscate">
-                      <label>
+                      <label htmlFor="blackhole">
                         If you want no reply type in here:
                         <input
+                          id="blackhole"
                           name="blackhole"
                           tabIndex={-1}
                           autoComplete="off"
@@ -145,13 +146,14 @@ const contact = () => {
 
                     <div className="animate-label">
                       <input
+                        id="input_name"
                         name="name"
                         type="text"
                         value={fields.name}
                         onChange={handleFieldChange}
                         className={nameError ? 'field-error' : ''}
                       />
-                      <label htmlFor="name">Name (Pflichtfeld)</label>
+                      <label htmlFor="input_name">Name (Pflichtfeld)</label>
                       {nameError && (
                         <p className="error-message" role="alert">
                           Bitte schreiben Sie noch Ihren Namen.
@@ -160,13 +162,14 @@ const contact = () => {
                     </div>
                     <div className="animate-label">
                       <input
+                        id="input_email"
                         name="email"
                         type="email"
                         value={fields.email}
                         onChange={handleFieldChange}
                         className={emailError ? 'field-error' : ''}
                       />
-                      <label htmlFor="email">
+                      <label htmlFor="input_email">
                         E-Mail Adresse (Pflichtfeld)
                       </label>
                       {emailError && (
@@ -177,20 +180,24 @@ const contact = () => {
                     </div>
                     <div className="animate-label">
                       <input
+                        id="input_phone"
                         name="phone"
                         type="tel"
                         value={fields.phone}
                         onChange={handleFieldChange}
                       />
-                      <label htmlFor="phone">Telefonnummer</label>
+                      <label htmlFor="input_phone">Telefonnummer</label>
                     </div>
                     <div className="animate-label">
                       <textarea
+                        id="input_message"
                         name="message"
                         onChange={handleFieldChange}
                         className={messageError ? 'field-error' : ''}
                       ></textarea>
-                      <label htmlFor="message">Nachricht (Pflichtfeld)</label>
+                      <label htmlFor="input_message">
+                        Nachricht (Pflichtfeld)
+                      </label>
                       {messageError && (
                         <p className="error-message" role="alert">
                           Bitte schreiben Sie noch Ihre Nachricht.
@@ -199,10 +206,11 @@ const contact = () => {
                     </div>
 
                     <div>
-                      <label className="checkbox-label">
+                      <label htmlFor="input_agree" className="checkbox-label">
                         <input
                           className="checkbox"
                           type="checkbox"
+                          id="input_agree"
                           name="agreed"
                           checked={fields.agreed}
                           onChange={handleFieldChange}
