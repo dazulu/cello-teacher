@@ -5,7 +5,7 @@ const contactInfo = () => {
         <section>
           <address className="contact-details">
             <p>
-              <strong>Christoph Siska</strong> | Cellist &amp; Intrumentallehrer
+              <strong>Christoph Siska</strong> | Cellist &amp; Instrumentallehrer
             </p>
             <p>
               <strong>Telefon: </strong>
