@@ -15,7 +15,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const store = useStore(pageProps.initialReduxState)
 
   useEffect(() => {
-    Fathom.load('NWNZTTVY', { url: 'https://bison.streamclocks.com/script.js' })
+    Fathom.load('NWNZTTVY', { url: 'https://cdn-eu.usefathom.com/script.js' })
 
     function onRouteChangeComplete() {
       Fathom.trackPageview()
