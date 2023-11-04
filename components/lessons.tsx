@@ -35,7 +35,7 @@ const lessons = () => {
                   <p className="type">Cello einzeln</p>
                   <p className="duration">45 Minuten pro Woche</p>
                   <p className="price">
-                    95 €* <span>monatlich</span>
+                    105 €* <span>monatlich</span>
                   </p>
                   <AnchorLink href="#contact" offset="30">
                     <button className="button">Kontakt</button>
@@ -45,7 +45,7 @@ const lessons = () => {
                   <p className="type">Cello einzeln</p>
                   <p className="duration">30 Minuten pro Woche</p>
                   <p className="price">
-                    65 €* <span>monatlich</span>
+                    75 €* <span>monatlich</span>
                   </p>
                   <AnchorLink href="#contact" offset="30">
                     <button className="button">Kontakt</button>
@@ -55,7 +55,7 @@ const lessons = () => {
                   <p className="type">Cello zu zweit</p>
                   <p className="duration">45 Minuten pro Woche</p>
                   <p className="price">
-                    55 €* <span>monatlich pro Person</span>
+                    65 €* <span>monatlich pro Person</span>
                   </p>
                   <AnchorLink href="#contact" offset="30">
                     <button className="button">Kontakt</button>
